@@ -207,7 +207,7 @@
             this.btnCloseDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseDate.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnCloseDate.ForeColor = System.Drawing.Color.White;
-            this.btnCloseDate.Location = new System.Drawing.Point(295, 6);
+            this.btnCloseDate.Location = new System.Drawing.Point(306, 6);
             this.btnCloseDate.Name = "btnCloseDate";
             this.btnCloseDate.Size = new System.Drawing.Size(168, 44);
             this.btnCloseDate.TabIndex = 9;
@@ -315,7 +315,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.txtSearch.Location = new System.Drawing.Point(117, 16);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1020, 32);
+            this.txtSearch.Size = new System.Drawing.Size(1010, 32);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
