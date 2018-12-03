@@ -14,6 +14,9 @@ namespace PaymentSubsidySystem
     {
         private Data.pos13DataContext db = new Data.pos13DataContext();
 
+        public Int32 currentUserId = 0; 
+        public String currentUser = "";
+
         public LoginForm()
         {
             InitializeComponent();
@@ -23,25 +26,37 @@ namespace PaymentSubsidySystem
         {
             try
             {
+                btnLogin.Enabled = false;
+                btnCancel.Enabled = false;
+
                 String username = txtUsername.Text;
                 String password = txtPassword.Text;
 
                 var user = from d in db.MstUsers where d.UserName.Equals(username) && d.Password.Equals(password) select d;
                 if (user.Any())
                 {
-                    PaymentSubsidyForm paymentSubsidyForm = new PaymentSubsidyForm();
-                    paymentSubsidyForm.Show();
+                    currentUserId = user.FirstOrDefault().Id;
+                    currentUser = user.FirstOrDefault().FullName;
 
                     Hide();
+
+                    PaymentSubsidyForm paymentSubsidyForm = new PaymentSubsidyForm(this);
+                    paymentSubsidyForm.Show();
                 }
                 else
                 {
                     MessageBox.Show("Incorrect Username or Password", "Login Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    btnLogin.Enabled = true;
+                    btnCancel.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                btnLogin.Enabled = true;
+                btnCancel.Enabled = true;
             }
         }
 

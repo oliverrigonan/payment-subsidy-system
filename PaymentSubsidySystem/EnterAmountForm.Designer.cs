@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnEnterAmountCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnnterAmountOK = new System.Windows.Forms.Button();
+            this.btnEnterAmountOK = new System.Windows.Forms.Button();
             this.txtEnterAmountAmount = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblSubsidyCode = new System.Windows.Forms.Label();
@@ -74,26 +74,26 @@
             this.label1.Text = "Subsidy Code:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnnterAmountOK
+            // btnEnterAmountOK
             // 
-            this.btnnterAmountOK.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnnterAmountOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnnterAmountOK.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnnterAmountOK.ForeColor = System.Drawing.Color.White;
-            this.btnnterAmountOK.Location = new System.Drawing.Point(302, 148);
-            this.btnnterAmountOK.Name = "btnnterAmountOK";
-            this.btnnterAmountOK.Size = new System.Drawing.Size(111, 51);
-            this.btnnterAmountOK.TabIndex = 13;
-            this.btnnterAmountOK.Text = "OK";
-            this.btnnterAmountOK.UseVisualStyleBackColor = false;
-            this.btnnterAmountOK.Click += new System.EventHandler(this.btnnterAmountOK_Click);
+            this.btnEnterAmountOK.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEnterAmountOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnterAmountOK.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnEnterAmountOK.ForeColor = System.Drawing.Color.White;
+            this.btnEnterAmountOK.Location = new System.Drawing.Point(302, 148);
+            this.btnEnterAmountOK.Name = "btnEnterAmountOK";
+            this.btnEnterAmountOK.Size = new System.Drawing.Size(111, 51);
+            this.btnEnterAmountOK.TabIndex = 13;
+            this.btnEnterAmountOK.Text = "OK";
+            this.btnEnterAmountOK.UseVisualStyleBackColor = false;
+            this.btnEnterAmountOK.Click += new System.EventHandler(this.btnnterAmountOK_Click);
             // 
             // txtEnterAmountAmount
             // 
             this.txtEnterAmountAmount.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtEnterAmountAmount.Location = new System.Drawing.Point(141, 88);
+            this.txtEnterAmountAmount.Location = new System.Drawing.Point(120, 88);
             this.txtEnterAmountAmount.Name = "txtEnterAmountAmount";
-            this.txtEnterAmountAmount.Size = new System.Drawing.Size(389, 32);
+            this.txtEnterAmountAmount.Size = new System.Drawing.Size(410, 32);
             this.txtEnterAmountAmount.TabIndex = 12;
             this.txtEnterAmountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtEnterAmountAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEnterAmountAmount_KeyPress);
@@ -112,7 +112,7 @@
             // 
             this.lblSubsidyCode.AutoSize = true;
             this.lblSubsidyCode.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSubsidyCode.Location = new System.Drawing.Point(164, 20);
+            this.lblSubsidyCode.Location = new System.Drawing.Point(150, 20);
             this.lblSubsidyCode.Name = "lblSubsidyCode";
             this.lblSubsidyCode.Size = new System.Drawing.Size(65, 19);
             this.lblSubsidyCode.TabIndex = 17;
@@ -129,7 +129,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEnterAmountCancel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnnterAmountOK);
+            this.Controls.Add(this.btnEnterAmountOK);
             this.Controls.Add(this.txtEnterAmountAmount);
             this.Controls.Add(this.lblUsername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -151,7 +151,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEnterAmountCancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnnterAmountOK;
+        private System.Windows.Forms.Button btnEnterAmountOK;
         private System.Windows.Forms.TextBox txtEnterAmountAmount;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblSubsidyCode;

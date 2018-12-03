@@ -109,7 +109,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 67);
+            this.panel1.Size = new System.Drawing.Size(628, 67);
             this.panel1.TabIndex = 5;
             // 
             // label1
@@ -134,7 +134,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(0, 310);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 88);
+            this.panel2.Size = new System.Drawing.Size(628, 88);
             this.panel2.TabIndex = 6;
             // 
             // label5
