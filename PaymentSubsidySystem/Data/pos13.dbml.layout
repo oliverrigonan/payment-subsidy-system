@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.875" name="pos13">
+  <DataContextMoniker Name="/pos13DataContext" />
+  <nestedChildShapes>
+    <classShape Id="2aadd3d6-aece-4054-9766-309525f76f9c" absoluteBounds="6.25, 5.875, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/pos13DataContext/TrnPaymentSubsidy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c650ab27-9e93-4115-9e27-70ba38d3e8c2" absoluteBounds="6.265, 6.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ed9a145-6098-416d-9e2f-aa2f3f0bff0d" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/pos13DataContext/TrnPaymentSubsidySetting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe737a6b-38ce-4b33-8a30-f93a0cde9296" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af032ff6-c251-4e86-b6a3-276be7a0a950" absoluteBounds="3.5, 6.125, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/pos13DataContext/MstCustomer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f27b3a77-9e08-4e1a-a5c0-43b904ec4936" absoluteBounds="3.515, 6.585, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e73a865d-8dc9-403c-abfd-fd3cf94f521a" absoluteBounds="0.75, 3.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/pos13DataContext/MstUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e851096c-cebb-4c65-b2a9-2f1c19f1c9df" absoluteBounds="0.765, 4.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 7.27005126953125); (6.25 : 7.27005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/pos13DataContext/MstCustomer/MstCustomer_TrnPaymentSubsidy" />
+      <nodes>
+        <classShapeMoniker Id="af032ff6-c251-4e86-b6a3-276be7a0a950" />
+        <classShapeMoniker Id="2aadd3d6-aece-4054-9766-309525f76f9c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.96875); (3.88541416666667 : 5.96875 : JumpStart); (4.05208083333333 : 5.96875 : JumpEnd); (4.41666666666667 : 5.96875 : JumpStart); (4.58333333333333 : 5.96875 : JumpEnd); (6.25 : 5.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/pos13DataContext/MstUser/MstUser_TrnPaymentSubsidy" />
+      <nodes>
+        <classShapeMoniker Id="e73a865d-8dc9-403c-abfd-fd3cf94f521a" />
+        <classShapeMoniker Id="2aadd3d6-aece-4054-9766-309525f76f9c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.8281225); (4.5 : 4.8281225); (4.5 : 6.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/pos13DataContext/MstUser/MstUser_MstCustomer" />
+      <nodes>
+        <classShapeMoniker Id="e73a865d-8dc9-403c-abfd-fd3cf94f521a" />
+        <classShapeMoniker Id="af032ff6-c251-4e86-b6a3-276be7a0a950" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.39843625); (3.9687475 : 5.39843625); (3.9687475 : 6.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/pos13DataContext/MstUser/MstUser_MstCustomer1" />
+      <nodes>
+        <classShapeMoniker Id="e73a865d-8dc9-403c-abfd-fd3cf94f521a" />
+        <classShapeMoniker Id="af032ff6-c251-4e86-b6a3-276be7a0a950" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="CustomerCodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CustomerCodeForm.Designer.cs">
+      <DependentUpon>CustomerCodeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\pos13.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pos13.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="EnterAmountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterAmountForm.Designer.cs">
+      <DependentUpon>EnterAmountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentSubsidyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentSubsidyForm.Designer.cs">
+      <DependentUpon>PaymentSubsidyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Data\pos13.dbml.layout">
+      <DependentUpon>pos13.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="CustomerCodeForm.resx">
+      <DependentUpon>CustomerCodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnterAmountForm.resx">
+      <DependentUpon>EnterAmountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentSubsidyForm.resx">
+      <DependentUpon>PaymentSubsidyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +101,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Data\pos13.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>pos13.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +118,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\ico\innosoftlogoicon.ico" />
+    <Content Include="Images\png\innosoftlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
