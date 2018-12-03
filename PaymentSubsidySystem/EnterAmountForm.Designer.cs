@@ -69,9 +69,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 21);
+            this.label1.Size = new System.Drawing.Size(128, 21);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Subsidary Code:";
+            this.label1.Text = "Subsidy Code:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnnterAmountOK
@@ -112,7 +112,7 @@
             // 
             this.lblSubsidyCode.AutoSize = true;
             this.lblSubsidyCode.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSubsidyCode.Location = new System.Drawing.Point(170, 20);
+            this.lblSubsidyCode.Location = new System.Drawing.Point(164, 20);
             this.lblSubsidyCode.Name = "lblSubsidyCode";
             this.lblSubsidyCode.Size = new System.Drawing.Size(65, 19);
             this.lblSubsidyCode.TabIndex = 17;
