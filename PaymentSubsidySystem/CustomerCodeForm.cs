@@ -55,7 +55,7 @@ namespace PaymentSubsidySystem
                     {
                         CustomerId = customer.FirstOrDefault().Id,
                         Date = DateTime.Today,
-                        SubsidyCode = "NA",
+                        SubsidyCode = paymentSubsidyForm.subsidyCode,
                         DebitAmount = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
                         CreditAmount = 0,
                         Particulars = "Initial Balance",

@@ -118,27 +118,34 @@ namespace PaymentSubsidySystem
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                DateTime currentDate = dtpDate.Value.Date;
-                String subsidyCodeString = txtSubsidyCode.Text;
-
-                var paymentSubsidies = from d in db.TrnPaymentSubsidies
-                                       where d.Date == currentDate
-                                       && d.SubsidyCode.Equals(subsidyCodeString)
-                                       select d;
-
-                if (paymentSubsidies.Any())
+                if (txtSubsidyCode.Text.Equals(""))
                 {
-                    subsidyCode = paymentSubsidies.FirstOrDefault().SubsidyCode;
-
-                    EnterAmountForm enterAmountForm = new EnterAmountForm(this);
-                    enterAmountForm.ShowDialog();
+                    MessageBox.Show("Subsidy code is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    subsidyCode = "";
+                    DateTime currentDate = dtpDate.Value.Date;
+                    String subsidyCodeString = txtSubsidyCode.Text;
 
-                    CustomerCodeForm customerCodeForm = new CustomerCodeForm(this, loginForm);
-                    customerCodeForm.ShowDialog();
+                    var paymentSubsidies = from d in db.TrnPaymentSubsidies
+                                           where d.Date == currentDate
+                                           && d.SubsidyCode.Equals(subsidyCodeString)
+                                           select d;
+
+                    if (paymentSubsidies.Any())
+                    {
+                        subsidyCode = paymentSubsidies.FirstOrDefault().SubsidyCode;
+
+                        EnterAmountForm enterAmountForm = new EnterAmountForm(this);
+                        enterAmountForm.ShowDialog();
+                    }
+                    else
+                    {
+                        subsidyCode = subsidyCodeString;
+
+                        CustomerCodeForm customerCodeForm = new CustomerCodeForm(this, loginForm);
+                        customerCodeForm.ShowDialog();
+                    }
                 }
             }
         }

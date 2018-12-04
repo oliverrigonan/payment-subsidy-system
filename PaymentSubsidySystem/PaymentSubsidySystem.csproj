@@ -121,6 +121,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\easyfis\icon\easyfislogomini.ico" />
+    <Content Include="Images\easyfis\logo\easyfislogo - Copy.png" />
+    <Content Include="Images\easyfis\logo\easyfislogo.png" />
+    <Content Include="Images\easyfis\logo\fab.png" />
     <Content Include="Images\ico\innosoftlogoicon.ico" />
     <Content Include="Images\png\innosoftlogo.png" />
   </ItemGroup>

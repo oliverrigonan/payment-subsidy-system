@@ -119,9 +119,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(362, 36);
+            this.label1.Size = new System.Drawing.Size(90, 36);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Payment Subsidy System";
+            this.label1.Text = "Login";
             // 
             // panel2
             // 
@@ -132,7 +132,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(0, 310);
+            this.panel2.Location = new System.Drawing.Point(0, 308);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(628, 88);
             this.panel2.TabIndex = 6;
@@ -143,9 +143,9 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.label5.Location = new System.Drawing.Point(194, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(211, 20);
+            this.label5.Size = new System.Drawing.Size(148, 20);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Cebu Innosoft Solutions Inc.";
+            this.label5.Text = "Easyfis Corporation";
             // 
             // label6
             // 
@@ -190,9 +190,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(89, 66);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
