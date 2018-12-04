@@ -56,7 +56,6 @@
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvPaymentSubsidy = new System.Windows.Forms.DataGridView();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSubsidyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +64,7 @@
             this.colCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colParticulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -400,18 +400,6 @@
             this.dgvPaymentSubsidy.Size = new System.Drawing.Size(1384, 399);
             this.dgvPaymentSubsidy.TabIndex = 14;
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.SystemColors.Control;
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.lblCurrentUser);
-            this.panel6.Location = new System.Drawing.Point(0, 584);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1384, 44);
-            this.panel6.TabIndex = 15;
-            // 
             // colId
             // 
             this.colId.FillWeight = 57.84526F;
@@ -475,6 +463,18 @@
             this.colUser.Name = "colUser";
             this.colUser.ReadOnly = true;
             // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.SystemColors.Control;
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.lblCurrentUser);
+            this.panel6.Location = new System.Drawing.Point(0, 584);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1384, 44);
+            this.panel6.TabIndex = 15;
+            // 
             // PaymentSubsidyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -494,6 +494,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment Subsidy List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PaymentSubsidyForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

@@ -215,5 +215,10 @@ namespace PaymentSubsidySystem
             lblPaymentSubsidyVersion.Text = settings.Version;
             lblPaymentSubsidyDeveloper.Text = settings.Developer;
         }
+
+        private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -112,7 +112,7 @@ namespace PaymentSubsidySystem
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         public void getFooterDetails()
@@ -128,6 +128,11 @@ namespace PaymentSubsidySystem
             lblLoginSoftware.Text = settings.Software;
             lblLoginVersion.Text = settings.Version;
             lblLoginDeveloper.Text = settings.Developer;
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
