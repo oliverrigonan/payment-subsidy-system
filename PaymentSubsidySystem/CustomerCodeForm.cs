@@ -13,6 +13,7 @@ namespace PaymentSubsidySystem
     public partial class CustomerCodeForm : Form
     {
         private Data.pos13DataContext db = new Data.pos13DataContext();
+
         public PaymentSubsidyForm paymentSubsidyForm;
         public LoginForm loginForm;
 
