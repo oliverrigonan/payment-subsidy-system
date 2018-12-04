@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -63,7 +64,6 @@
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -85,6 +85,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1384, 67);
             this.panel1.TabIndex = 6;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.btnSettings.ForeColor = System.Drawing.Color.Black;
+            this.btnSettings.Location = new System.Drawing.Point(1092, 11);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(131, 44);
+            this.btnSettings.TabIndex = 11;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = false;
             // 
             // btnLogout
             // 
@@ -157,7 +172,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "1.20181203.NOR";
+            this.label4.Text = "1.20181204.NOR";
             // 
             // label3
             // 
@@ -444,21 +459,6 @@
             this.label8.Size = new System.Drawing.Size(101, 18);
             this.label8.TabIndex = 12;
             this.label8.Text = "Current User:";
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.Location = new System.Drawing.Point(1092, 11);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(131, 44);
-            this.btnSettings.TabIndex = 11;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = false;
             // 
             // PaymentSubsidyForm
             // 

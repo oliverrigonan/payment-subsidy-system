@@ -165,7 +165,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "1.20181203.NOR";
+            this.label4.Text = "1.20181204.NOR";
             // 
             // label3
             // 
