@@ -36,13 +36,16 @@
             this.txtEnterAmountAmount = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblSubsidyCode = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(12, 40);
+            this.label2.Location = new System.Drawing.Point(14, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 21);
             this.label2.TabIndex = 16;
@@ -55,7 +58,7 @@
             this.btnEnterAmountCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnterAmountCancel.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnEnterAmountCancel.ForeColor = System.Drawing.Color.White;
-            this.btnEnterAmountCancel.Location = new System.Drawing.Point(419, 148);
+            this.btnEnterAmountCancel.Location = new System.Drawing.Point(419, 202);
             this.btnEnterAmountCancel.Name = "btnEnterAmountCancel";
             this.btnEnterAmountCancel.Size = new System.Drawing.Size(111, 51);
             this.btnEnterAmountCancel.TabIndex = 15;
@@ -67,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 21);
             this.label1.TabIndex = 14;
@@ -80,7 +83,7 @@
             this.btnEnterAmountOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnterAmountOK.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnEnterAmountOK.ForeColor = System.Drawing.Color.White;
-            this.btnEnterAmountOK.Location = new System.Drawing.Point(302, 148);
+            this.btnEnterAmountOK.Location = new System.Drawing.Point(302, 202);
             this.btnEnterAmountOK.Name = "btnEnterAmountOK";
             this.btnEnterAmountOK.Size = new System.Drawing.Size(111, 51);
             this.btnEnterAmountOK.TabIndex = 13;
@@ -91,9 +94,9 @@
             // txtEnterAmountAmount
             // 
             this.txtEnterAmountAmount.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtEnterAmountAmount.Location = new System.Drawing.Point(120, 88);
+            this.txtEnterAmountAmount.Location = new System.Drawing.Point(133, 148);
             this.txtEnterAmountAmount.Name = "txtEnterAmountAmount";
-            this.txtEnterAmountAmount.Size = new System.Drawing.Size(410, 32);
+            this.txtEnterAmountAmount.Size = new System.Drawing.Size(397, 32);
             this.txtEnterAmountAmount.TabIndex = 12;
             this.txtEnterAmountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtEnterAmountAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEnterAmountAmount_KeyPress);
@@ -102,7 +105,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(12, 91);
+            this.lblUsername.Location = new System.Drawing.Point(14, 151);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(93, 23);
             this.lblUsername.TabIndex = 11;
@@ -112,19 +115,42 @@
             // 
             this.lblSubsidyCode.AutoSize = true;
             this.lblSubsidyCode.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSubsidyCode.Location = new System.Drawing.Point(150, 20);
+            this.lblSubsidyCode.Location = new System.Drawing.Point(152, 80);
             this.lblSubsidyCode.Name = "lblSubsidyCode";
             this.lblSubsidyCode.Size = new System.Drawing.Size(65, 19);
             this.lblSubsidyCode.TabIndex = 17;
             this.lblSubsidyCode.Text = "#Code";
             this.lblSubsidyCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(544, 67);
+            this.panel1.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(202, 36);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Enter Amount";
+            // 
             // EnterAmountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(542, 211);
+            this.ClientSize = new System.Drawing.Size(542, 265);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblSubsidyCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEnterAmountCancel);
@@ -134,13 +160,15 @@
             this.Controls.Add(this.lblUsername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(560, 258);
+            this.MaximumSize = new System.Drawing.Size(560, 312);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(560, 258);
+            this.MinimumSize = new System.Drawing.Size(560, 312);
             this.Name = "EnterAmountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter Amount";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterAmountForm_KeyPress);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +183,7 @@
         private System.Windows.Forms.TextBox txtEnterAmountAmount;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblSubsidyCode;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
     }
 }

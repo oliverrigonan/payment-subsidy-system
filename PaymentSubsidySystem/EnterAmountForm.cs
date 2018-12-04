@@ -12,7 +12,7 @@ namespace PaymentSubsidySystem
 {
     public partial class EnterAmountForm : Form
     {
-        private Data.pos13DataContext db = new Data.pos13DataContext();
+        private Data.pos13DataContext db;
 
         public PaymentSubsidyForm paymentSubsidyForm;
         public LoginForm loginForm;
@@ -20,6 +20,7 @@ namespace PaymentSubsidySystem
         public EnterAmountForm(PaymentSubsidyForm form, LoginForm form1)
         {
             InitializeComponent();
+            db = new Data.pos13DataContext(Settings.GetConnectionString());
 
             paymentSubsidyForm = form;
             loginForm = form1;
@@ -64,6 +65,9 @@ namespace PaymentSubsidySystem
                         if (amount == 0)
                         {
                             MessageBox.Show("Zero amount is not allowed.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            btnEnterAmountOK.Enabled = true;
+                            btnEnterAmountCancel.Enabled = true;
                         }
                         else
                         {
@@ -95,6 +99,9 @@ namespace PaymentSubsidySystem
                     else
                     {
                         MessageBox.Show("The amount should not be greater than the current balance of the subsidy.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        btnEnterAmountOK.Enabled = true;
+                        btnEnterAmountCancel.Enabled = true;
                     }
                 }
                 else

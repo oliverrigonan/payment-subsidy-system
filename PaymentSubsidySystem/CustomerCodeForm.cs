@@ -12,7 +12,7 @@ namespace PaymentSubsidySystem
 {
     public partial class CustomerCodeForm : Form
     {
-        private Data.pos13DataContext db = new Data.pos13DataContext();
+        private Data.pos13DataContext db;
 
         public PaymentSubsidyForm paymentSubsidyForm;
         public LoginForm loginForm;
@@ -20,6 +20,7 @@ namespace PaymentSubsidySystem
         public CustomerCodeForm(PaymentSubsidyForm form, LoginForm form1)
         {
             InitializeComponent();
+            db = new Data.pos13DataContext(Settings.GetConnectionString());
 
             paymentSubsidyForm = form;
             loginForm = form1;
@@ -53,6 +54,9 @@ namespace PaymentSubsidySystem
                 if (paymentSubsidy.Any())
                 {
                     MessageBox.Show("Customer already exist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    btnCustomerCodeOK.Enabled = true;
+                    btnCustomerCodeCancel.Enabled = true;
                 }
                 else
                 {

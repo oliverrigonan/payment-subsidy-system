@@ -5,24 +5,28 @@ using System.Data;
 using System.Data.Linq;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace PaymentSubsidySystem
 {
     public partial class PaymentSubsidyForm : Form
     {
-        private Data.pos13DataContext db = new Data.pos13DataContext();
+        private Data.pos13DataContext db;
 
         public String subsidyCode = "";
-        public DateTime filterDate;
+        public DateTime filterDate = DateTime.Today;
         public LoginForm loginForm;
 
         public PaymentSubsidyForm(LoginForm form)
         {
             InitializeComponent();
+            db = new Data.pos13DataContext(Settings.GetConnectionString());
 
             createPaymentSubsidyForm();
             ActiveControl = txtSubsidyCode;
@@ -30,6 +34,8 @@ namespace PaymentSubsidySystem
             loginForm = form;
 
             lblCurrentUser.Text = loginForm.currentUser;
+
+            getFooterDetails();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -187,6 +193,27 @@ namespace PaymentSubsidySystem
         public void emptySubsidyCode()
         {
             txtSubsidyCode.Text = subsidyCode;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm(this, loginForm);
+            settingsForm.ShowDialog();
+        }
+
+        public void getFooterDetails()
+        {
+            String settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings.json");
+
+            String json;
+            using (StreamReader trmRead = new StreamReader(settingsPath)) { json = trmRead.ReadToEnd(); }
+
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            Entities.Settings settings = javaScriptSerializer.Deserialize<Entities.Settings>(json);
+
+            lblPaymentSubsidySoftware.Text = settings.Software;
+            lblPaymentSubsidyVersion.Text = settings.Version;
+            lblPaymentSubsidyDeveloper.Text = settings.Developer;
         }
     }
 }

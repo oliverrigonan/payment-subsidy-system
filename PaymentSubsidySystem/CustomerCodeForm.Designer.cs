@@ -35,6 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCustomerCodeCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCustomerCodeOK
@@ -43,7 +46,7 @@
             this.btnCustomerCodeOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerCodeOK.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnCustomerCodeOK.ForeColor = System.Drawing.Color.White;
-            this.btnCustomerCodeOK.Location = new System.Drawing.Point(302, 148);
+            this.btnCustomerCodeOK.Location = new System.Drawing.Point(302, 202);
             this.btnCustomerCodeOK.Name = "btnCustomerCodeOK";
             this.btnCustomerCodeOK.Size = new System.Drawing.Size(111, 51);
             this.btnCustomerCodeOK.TabIndex = 7;
@@ -54,9 +57,9 @@
             // txtCustomerCode
             // 
             this.txtCustomerCode.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtCustomerCode.Location = new System.Drawing.Point(106, 88);
+            this.txtCustomerCode.Location = new System.Drawing.Point(133, 148);
             this.txtCustomerCode.Name = "txtCustomerCode";
-            this.txtCustomerCode.Size = new System.Drawing.Size(424, 32);
+            this.txtCustomerCode.Size = new System.Drawing.Size(397, 32);
             this.txtCustomerCode.TabIndex = 6;
             this.txtCustomerCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerCode_KeyPress);
             // 
@@ -64,7 +67,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(12, 91);
+            this.lblUsername.Location = new System.Drawing.Point(14, 151);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(71, 23);
             this.lblUsername.TabIndex = 5;
@@ -74,7 +77,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(14, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(245, 21);
             this.label1.TabIndex = 8;
@@ -87,7 +90,7 @@
             this.btnCustomerCodeCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerCodeCancel.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnCustomerCodeCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCustomerCodeCancel.Location = new System.Drawing.Point(419, 148);
+            this.btnCustomerCodeCancel.Location = new System.Drawing.Point(419, 202);
             this.btnCustomerCodeCancel.Name = "btnCustomerCodeCancel";
             this.btnCustomerCodeCancel.Size = new System.Drawing.Size(111, 51);
             this.btnCustomerCodeCancel.TabIndex = 9;
@@ -99,19 +102,42 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(12, 40);
+            this.label2.Location = new System.Drawing.Point(14, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(306, 21);
             this.label2.TabIndex = 10;
             this.label2.Text = "Please enter customer code below.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(544, 67);
+            this.panel1.TabIndex = 20;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(316, 36);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Enter Customer Code";
+            // 
             // CustomerCodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(542, 211);
+            this.ClientSize = new System.Drawing.Size(542, 265);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCustomerCodeCancel);
             this.Controls.Add(this.label1);
@@ -120,13 +146,15 @@
             this.Controls.Add(this.lblUsername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(560, 258);
+            this.MaximumSize = new System.Drawing.Size(560, 312);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(560, 258);
+            this.MinimumSize = new System.Drawing.Size(560, 312);
             this.Name = "CustomerCodeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Code";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CustomerCodeForm_KeyPress);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +168,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCustomerCodeCancel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
     }
 }

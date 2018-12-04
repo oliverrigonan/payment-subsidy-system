@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentSubsidyForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblPaymentSubsidyDeveloper = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblPaymentSubsidyVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPaymentSubsidySoftware = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -102,6 +102,7 @@
             this.btnSettings.TabIndex = 11;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnLogout
             // 
@@ -135,26 +136,26 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblPaymentSubsidyDeveloper);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.lblPaymentSubsidyVersion);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblPaymentSubsidySoftware);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(0, 693);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1384, 94);
             this.panel2.TabIndex = 7;
             // 
-            // label5
+            // lblPaymentSubsidyDeveloper
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.label5.Location = new System.Drawing.Point(194, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Easyfis Corporation";
+            this.lblPaymentSubsidyDeveloper.AutoSize = true;
+            this.lblPaymentSubsidyDeveloper.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblPaymentSubsidyDeveloper.Location = new System.Drawing.Point(194, 56);
+            this.lblPaymentSubsidyDeveloper.Name = "lblPaymentSubsidyDeveloper";
+            this.lblPaymentSubsidyDeveloper.Size = new System.Drawing.Size(148, 20);
+            this.lblPaymentSubsidyDeveloper.TabIndex = 11;
+            this.lblPaymentSubsidyDeveloper.Text = "Easyfis Corporation";
             // 
             // label6
             // 
@@ -166,15 +167,15 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Developer:";
             // 
-            // label4
+            // lblPaymentSubsidyVersion
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.label4.Location = new System.Drawing.Point(171, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "1.20181204.NOR";
+            this.lblPaymentSubsidyVersion.AutoSize = true;
+            this.lblPaymentSubsidyVersion.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblPaymentSubsidyVersion.Location = new System.Drawing.Point(171, 37);
+            this.lblPaymentSubsidyVersion.Name = "lblPaymentSubsidyVersion";
+            this.lblPaymentSubsidyVersion.Size = new System.Drawing.Size(122, 20);
+            this.lblPaymentSubsidyVersion.TabIndex = 9;
+            this.lblPaymentSubsidyVersion.Text = "1.20181204.NOR";
             // 
             // label3
             // 
@@ -186,15 +187,15 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Version:";
             // 
-            // label2
+            // lblPaymentSubsidySoftware
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(98, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 19);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Payment Subsidy System";
+            this.lblPaymentSubsidySoftware.AutoSize = true;
+            this.lblPaymentSubsidySoftware.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.lblPaymentSubsidySoftware.Location = new System.Drawing.Point(98, 9);
+            this.lblPaymentSubsidySoftware.Name = "lblPaymentSubsidySoftware";
+            this.lblPaymentSubsidySoftware.Size = new System.Drawing.Size(212, 19);
+            this.lblPaymentSubsidySoftware.TabIndex = 7;
+            this.lblPaymentSubsidySoftware.Text = "Payment Subsidy System";
             // 
             // pictureBox1
             // 
@@ -328,7 +329,7 @@
             this.lblCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCurrentUser.AutoSize = true;
             this.lblCurrentUser.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.lblCurrentUser.Location = new System.Drawing.Point(146, 10);
+            this.lblCurrentUser.Location = new System.Drawing.Point(146, 9);
             this.lblCurrentUser.Name = "lblCurrentUser";
             this.lblCurrentUser.Size = new System.Drawing.Size(131, 22);
             this.lblCurrentUser.TabIndex = 13;
@@ -339,7 +340,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(14, 11);
+            this.label8.Location = new System.Drawing.Point(14, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(126, 23);
             this.label8.TabIndex = 12;
@@ -418,14 +419,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPaymentSubsidy.BackgroundColor = System.Drawing.Color.White;
             this.dgvPaymentSubsidy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPaymentSubsidy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentSubsidy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -436,25 +437,25 @@
             this.colCredit,
             this.colParticulars,
             this.colUser});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPaymentSubsidy.Location = new System.Drawing.Point(0, 189);
             this.dgvPaymentSubsidy.Name = "dgvPaymentSubsidy";
             this.dgvPaymentSubsidy.ReadOnly = true;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPaymentSubsidy.RowHeadersVisible = false;
             this.dgvPaymentSubsidy.RowTemplate.Height = 24;
             this.dgvPaymentSubsidy.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -516,11 +517,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPaymentSubsidyDeveloper;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPaymentSubsidyVersion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPaymentSubsidySoftware;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DateTimePicker dtpDate;

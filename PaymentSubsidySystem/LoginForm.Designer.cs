@@ -37,11 +37,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblLoginDeveloper = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblLoginVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLoginSoftware = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -126,26 +126,26 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblLoginDeveloper);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.lblLoginVersion);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblLoginSoftware);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(0, 308);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(628, 88);
             this.panel2.TabIndex = 6;
             // 
-            // label5
+            // lblLoginDeveloper
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.label5.Location = new System.Drawing.Point(194, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Easyfis Corporation";
+            this.lblLoginDeveloper.AutoSize = true;
+            this.lblLoginDeveloper.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblLoginDeveloper.Location = new System.Drawing.Point(194, 56);
+            this.lblLoginDeveloper.Name = "lblLoginDeveloper";
+            this.lblLoginDeveloper.Size = new System.Drawing.Size(148, 20);
+            this.lblLoginDeveloper.TabIndex = 11;
+            this.lblLoginDeveloper.Text = "Easyfis Corporation";
             // 
             // label6
             // 
@@ -157,15 +157,15 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Developer:";
             // 
-            // label4
+            // lblLoginVersion
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.label4.Location = new System.Drawing.Point(171, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "1.20181204.NOR";
+            this.lblLoginVersion.AutoSize = true;
+            this.lblLoginVersion.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblLoginVersion.Location = new System.Drawing.Point(171, 37);
+            this.lblLoginVersion.Name = "lblLoginVersion";
+            this.lblLoginVersion.Size = new System.Drawing.Size(122, 20);
+            this.lblLoginVersion.TabIndex = 9;
+            this.lblLoginVersion.Text = "1.20181204.NOR";
             // 
             // label3
             // 
@@ -177,15 +177,15 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Version:";
             // 
-            // label2
+            // lblLoginSoftware
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(98, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 19);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Payment Subsidy System";
+            this.lblLoginSoftware.AutoSize = true;
+            this.lblLoginSoftware.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.lblLoginSoftware.Location = new System.Drawing.Point(98, 9);
+            this.lblLoginSoftware.Name = "lblLoginSoftware";
+            this.lblLoginSoftware.Size = new System.Drawing.Size(212, 19);
+            this.lblLoginSoftware.TabIndex = 7;
+            this.lblLoginSoftware.Text = "Payment Subsidy System";
             // 
             // pictureBox1
             // 
@@ -255,11 +255,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblLoginDeveloper;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblLoginVersion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblLoginSoftware;
         private System.Windows.Forms.Button btnCancel;
     }
 }
