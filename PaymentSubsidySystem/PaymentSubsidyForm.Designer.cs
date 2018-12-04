@@ -55,16 +55,16 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colParticulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSubsidyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPaymentSubsidy = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubsidyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colParticulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -346,69 +346,6 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Current User:";
             // 
-            // colUser
-            // 
-            this.colUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colUser.FillWeight = 101.8966F;
-            this.colUser.HeaderText = "User";
-            this.colUser.Name = "colUser";
-            this.colUser.ReadOnly = true;
-            // 
-            // colParticulars
-            // 
-            this.colParticulars.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colParticulars.FillWeight = 103.5104F;
-            this.colParticulars.HeaderText = "Particulars";
-            this.colParticulars.Name = "colParticulars";
-            this.colParticulars.ReadOnly = true;
-            // 
-            // colCredit
-            // 
-            this.colCredit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCredit.FillWeight = 104.0708F;
-            this.colCredit.HeaderText = "Credit";
-            this.colCredit.Name = "colCredit";
-            this.colCredit.ReadOnly = true;
-            // 
-            // colDebit
-            // 
-            this.colDebit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colDebit.FillWeight = 105.4602F;
-            this.colDebit.HeaderText = "Debit";
-            this.colDebit.Name = "colDebit";
-            this.colDebit.ReadOnly = true;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomer.FillWeight = 106.9758F;
-            this.colCustomer.HeaderText = "Customer";
-            this.colCustomer.Name = "colCustomer";
-            this.colCustomer.ReadOnly = true;
-            // 
-            // colSubsidyCode
-            // 
-            this.colSubsidyCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSubsidyCode.FillWeight = 109.4062F;
-            this.colSubsidyCode.HeaderText = "Subsidy Code";
-            this.colSubsidyCode.Name = "colSubsidyCode";
-            this.colSubsidyCode.ReadOnly = true;
-            // 
-            // colTimeStamp
-            // 
-            this.colTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTimeStamp.FillWeight = 110.8348F;
-            this.colTimeStamp.HeaderText = "Time Stamp";
-            this.colTimeStamp.Name = "colTimeStamp";
-            this.colTimeStamp.ReadOnly = true;
-            // 
-            // colId
-            // 
-            this.colId.FillWeight = 57.84526F;
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            // 
             // dgvPaymentSubsidy
             // 
             this.dgvPaymentSubsidy.AllowUserToAddRows = false;
@@ -475,6 +412,69 @@
             this.panel6.Size = new System.Drawing.Size(1384, 44);
             this.panel6.TabIndex = 15;
             // 
+            // colId
+            // 
+            this.colId.FillWeight = 57.84526F;
+            this.colId.HeaderText = "Tx No.";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // colTimeStamp
+            // 
+            this.colTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTimeStamp.FillWeight = 110.8348F;
+            this.colTimeStamp.HeaderText = "Time Stamp";
+            this.colTimeStamp.Name = "colTimeStamp";
+            this.colTimeStamp.ReadOnly = true;
+            // 
+            // colSubsidyCode
+            // 
+            this.colSubsidyCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSubsidyCode.FillWeight = 109.4062F;
+            this.colSubsidyCode.HeaderText = "Subsidy Code";
+            this.colSubsidyCode.Name = "colSubsidyCode";
+            this.colSubsidyCode.ReadOnly = true;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomer.FillWeight = 106.9758F;
+            this.colCustomer.HeaderText = "Customer";
+            this.colCustomer.Name = "colCustomer";
+            this.colCustomer.ReadOnly = true;
+            // 
+            // colDebit
+            // 
+            this.colDebit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDebit.FillWeight = 105.4602F;
+            this.colDebit.HeaderText = "Debit";
+            this.colDebit.Name = "colDebit";
+            this.colDebit.ReadOnly = true;
+            // 
+            // colCredit
+            // 
+            this.colCredit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCredit.FillWeight = 104.0708F;
+            this.colCredit.HeaderText = "Credit";
+            this.colCredit.Name = "colCredit";
+            this.colCredit.ReadOnly = true;
+            // 
+            // colParticulars
+            // 
+            this.colParticulars.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colParticulars.FillWeight = 103.5104F;
+            this.colParticulars.HeaderText = "Particulars";
+            this.colParticulars.Name = "colParticulars";
+            this.colParticulars.ReadOnly = true;
+            // 
+            // colUser
+            // 
+            this.colUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colUser.FillWeight = 101.8966F;
+            this.colUser.HeaderText = "User";
+            this.colUser.Name = "colUser";
+            this.colUser.ReadOnly = true;
+            // 
             // PaymentSubsidyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -537,15 +537,15 @@
         private System.Windows.Forms.Label lblCurrentUser;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colParticulars;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDebit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSubsidyCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTimeStamp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridView dgvPaymentSubsidy;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTimeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSubsidyCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDebit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCredit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colParticulars;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
     }
 }
