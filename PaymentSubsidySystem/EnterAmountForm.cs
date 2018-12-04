@@ -15,12 +15,14 @@ namespace PaymentSubsidySystem
         private Data.pos13DataContext db = new Data.pos13DataContext();
 
         public PaymentSubsidyForm paymentSubsidyForm;
+        public LoginForm loginForm;
 
-        public EnterAmountForm(PaymentSubsidyForm form)
+        public EnterAmountForm(PaymentSubsidyForm form, LoginForm form1)
         {
             InitializeComponent();
 
             paymentSubsidyForm = form;
+            loginForm = form1;
 
             lblSubsidyCode.Text = paymentSubsidyForm.subsidyCode;
         }
@@ -43,30 +45,61 @@ namespace PaymentSubsidySystem
                 btnEnterAmountCancel.Enabled = false;
 
                 Decimal amount = Convert.ToDecimal(txtEnterAmountAmount.Text);
+                DateTime filterDate = paymentSubsidyForm.filterDate;
 
                 var paymentSubsidies = from d in db.TrnPaymentSubsidies
                                        where d.SubsidyCode.Equals(lblSubsidyCode.Text)
+                                       && d.Date == filterDate
                                        select d;
 
                 if (paymentSubsidies.Any())
                 {
-                    var updatePaymentSubsidy = paymentSubsidies.FirstOrDefault();
-                    updatePaymentSubsidy.CreditAmount = amount;
-                    updatePaymentSubsidy.TimeStamp = DateTime.Now;
+                    Decimal totalDebitAmount = paymentSubsidies.Sum(d => d.DebitAmount);
+                    Decimal totalCreditAmount = paymentSubsidies.Sum(d => d.CreditAmount);
 
-                    db.SubmitChanges();
+                    Decimal totalAmount = totalDebitAmount - totalCreditAmount;
 
-                    MessageBox.Show("Update successful", "Success!", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    Close();
+                    if (amount <= totalAmount)
+                    {
+                        if (amount == 0)
+                        {
+                            MessageBox.Show("Zero amount is not allowed.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            Data.TrnPaymentSubsidy newPaymentSubsidy = new Data.TrnPaymentSubsidy
+                            {
+                                CustomerId = paymentSubsidies.FirstOrDefault().CustomerId,
+                                Date = filterDate,
+                                SubsidyCode = paymentSubsidies.FirstOrDefault().SubsidyCode,
+                                DebitAmount = 0,
+                                CreditAmount = amount,
+                                Particulars = "",
+                                UserId = loginForm.currentUserId,
+                                TimeStamp = DateTime.Now
+                            };
 
-                    paymentSubsidyForm.createPaymentSubsidyForm();
+                            db.TrnPaymentSubsidies.InsertOnSubmit(newPaymentSubsidy);
+                            db.SubmitChanges();
 
-                    paymentSubsidyForm.subsidyCode = "";
-                    paymentSubsidyForm.emptySubsidyCode();
+                            db.SubmitChanges();
+
+                            Close();
+
+                            paymentSubsidyForm.createPaymentSubsidyForm();
+
+                            paymentSubsidyForm.subsidyCode = "";
+                            paymentSubsidyForm.emptySubsidyCode();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The amount should not be greater than the current balance of the subsidy.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Payment Subsidy code not found!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Payment Subsidy code not found.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     btnEnterAmountOK.Enabled = true;
                     btnEnterAmountCancel.Enabled = true;

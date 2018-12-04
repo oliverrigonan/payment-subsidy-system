@@ -17,6 +17,7 @@ namespace PaymentSubsidySystem
         private Data.pos13DataContext db = new Data.pos13DataContext();
 
         public String subsidyCode = "";
+        public DateTime filterDate;
         public LoginForm loginForm;
 
         public PaymentSubsidyForm(LoginForm form)
@@ -46,15 +47,15 @@ namespace PaymentSubsidySystem
                 dgvPaymentSubsidy.Rows.Clear();
                 dgvPaymentSubsidy.Refresh();
 
-                dgvPaymentSubsidy.Columns["DebitAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPaymentSubsidy.Columns["CreditAmount"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPaymentSubsidy.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                DateTime currentDate = dtpDate.Value.Date;
                 String searchString = txtSearch.Text;
+                filterDate = dtpDate.Value.Date;
 
                 var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-                                       where d.Date == currentDate
+                                       where d.Date == filterDate
                                        && (d.SubsidyCode.Contains(searchString)
                                        || d.MstCustomer.Customer.Contains(searchString)
                                        || d.Particulars.Contains(searchString)
@@ -65,11 +66,30 @@ namespace PaymentSubsidySystem
                 {
                     db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
 
+                    Decimal totalDebit = 0, totalCredit = 0;
                     foreach (var paymentSubsidy in paymentSubsidies)
                     {
-                        Debug.WriteLine(paymentSubsidy.SubsidyCode);
-                        dgvPaymentSubsidy.Rows.Add(paymentSubsidy.TimeStamp, paymentSubsidy.SubsidyCode, paymentSubsidy.MstCustomer.Customer, paymentSubsidy.DebitAmount.ToString("#,##0.00"), paymentSubsidy.CreditAmount.ToString("#,##0.00"), paymentSubsidy.Particulars, paymentSubsidy.MstUser.FullName);
+                        dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
+                            paymentSubsidy.TimeStamp,
+                            paymentSubsidy.SubsidyCode,
+                            paymentSubsidy.MstCustomer.Customer,
+                            paymentSubsidy.DebitAmount.ToString("#,##0.00"),
+                            paymentSubsidy.CreditAmount.ToString("#,##0.00"),
+                            paymentSubsidy.Particulars,
+                            paymentSubsidy.MstUser.FullName);
+
+                        totalDebit += paymentSubsidy.DebitAmount;
+                        totalCredit += paymentSubsidy.CreditAmount;
                     }
+
+                    dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
+
+                    dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+
+                    dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
                 }
             }
             catch (Exception ex)
@@ -80,6 +100,8 @@ namespace PaymentSubsidySystem
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
+            filterDate = dtpDate.Value.Date;
+
             dgvPaymentSubsidy.Rows.Clear();
             dgvPaymentSubsidy.Refresh();
 
@@ -124,27 +146,39 @@ namespace PaymentSubsidySystem
                 }
                 else
                 {
-                    DateTime currentDate = dtpDate.Value.Date;
                     String subsidyCodeString = txtSubsidyCode.Text;
+                    filterDate = dtpDate.Value.Date;
 
-                    var paymentSubsidies = from d in db.TrnPaymentSubsidies
-                                           where d.Date == currentDate
-                                           && d.SubsidyCode.Equals(subsidyCodeString)
-                                           select d;
+                    var previousPaymentSubsidies = from d in db.TrnPaymentSubsidies
+                                                   where d.Date < filterDate
+                                                   && d.SubsidyCode.Equals(subsidyCodeString)
+                                                   select d;
 
-                    if (paymentSubsidies.Any())
+                    if (previousPaymentSubsidies.Any())
                     {
-                        subsidyCode = paymentSubsidies.FirstOrDefault().SubsidyCode;
-
-                        EnterAmountForm enterAmountForm = new EnterAmountForm(this);
-                        enterAmountForm.ShowDialog();
+                        MessageBox.Show("Subsidy code already exist from the previous date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        subsidyCode = subsidyCodeString;
+                        var currentPaymentSubsidies = from d in db.TrnPaymentSubsidies
+                                                      where d.Date == filterDate
+                                                      && d.SubsidyCode.Equals(subsidyCodeString)
+                                                      select d;
 
-                        CustomerCodeForm customerCodeForm = new CustomerCodeForm(this, loginForm);
-                        customerCodeForm.ShowDialog();
+                        if (currentPaymentSubsidies.Any())
+                        {
+                            subsidyCode = currentPaymentSubsidies.FirstOrDefault().SubsidyCode;
+
+                            EnterAmountForm enterAmountForm = new EnterAmountForm(this, loginForm);
+                            enterAmountForm.ShowDialog();
+                        }
+                        else
+                        {
+                            subsidyCode = subsidyCodeString;
+
+                            CustomerCodeForm customerCodeForm = new CustomerCodeForm(this, loginForm);
+                            customerCodeForm.ShowDialog();
+                        }
                     }
                 }
             }

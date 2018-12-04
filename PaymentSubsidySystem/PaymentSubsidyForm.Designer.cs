@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentSubsidyForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -44,7 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCloseDate = new System.Windows.Forms.Button();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.lblDate = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -54,16 +53,18 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.dgvPaymentSubsidy = new System.Windows.Forms.DataGridView();
-            this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubsidyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DebitAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreditAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Particulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colParticulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubsidyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPaymentSubsidy = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,6 +72,7 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentSubsidy)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -209,26 +211,12 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel3.Controls.Add(this.btnCloseDate);
             this.panel3.Controls.Add(this.dtpDate);
             this.panel3.Controls.Add(this.lblDate);
             this.panel3.Location = new System.Drawing.Point(0, 67);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1384, 62);
             this.panel3.TabIndex = 8;
-            // 
-            // btnCloseDate
-            // 
-            this.btnCloseDate.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnCloseDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseDate.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.btnCloseDate.ForeColor = System.Drawing.Color.White;
-            this.btnCloseDate.Location = new System.Drawing.Point(306, 6);
-            this.btnCloseDate.Name = "btnCloseDate";
-            this.btnCloseDate.Size = new System.Drawing.Size(168, 44);
-            this.btnCloseDate.TabIndex = 9;
-            this.btnCloseDate.Text = "Close Date";
-            this.btnCloseDate.UseVisualStyleBackColor = false;
             // 
             // dtpDate
             // 
@@ -308,7 +296,7 @@
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(1239, 11);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(131, 41);
+            this.btnSearch.Size = new System.Drawing.Size(131, 39);
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -329,123 +317,20 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtSearch.Location = new System.Drawing.Point(117, 16);
+            this.txtSearch.Location = new System.Drawing.Point(117, 15);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(1106, 32);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
-            // dgvPaymentSubsidy
-            // 
-            this.dgvPaymentSubsidy.AllowUserToAddRows = false;
-            this.dgvPaymentSubsidy.AllowUserToDeleteRows = false;
-            this.dgvPaymentSubsidy.AllowUserToOrderColumns = true;
-            this.dgvPaymentSubsidy.AllowUserToResizeRows = false;
-            this.dgvPaymentSubsidy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPaymentSubsidy.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPaymentSubsidy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPaymentSubsidy.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvPaymentSubsidy.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPaymentSubsidy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaymentSubsidy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TimeStamp,
-            this.SubsidyCode,
-            this.Customer,
-            this.DebitAmount,
-            this.CreditAmount,
-            this.Particulars,
-            this.User});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPaymentSubsidy.Location = new System.Drawing.Point(0, 189);
-            this.dgvPaymentSubsidy.Name = "dgvPaymentSubsidy";
-            this.dgvPaymentSubsidy.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPaymentSubsidy.RowHeadersVisible = false;
-            this.dgvPaymentSubsidy.RowTemplate.Height = 24;
-            this.dgvPaymentSubsidy.Size = new System.Drawing.Size(1384, 398);
-            this.dgvPaymentSubsidy.TabIndex = 11;
-            // 
-            // TimeStamp
-            // 
-            this.TimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TimeStamp.HeaderText = "Time Stamp";
-            this.TimeStamp.Name = "TimeStamp";
-            this.TimeStamp.ReadOnly = true;
-            // 
-            // SubsidyCode
-            // 
-            this.SubsidyCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubsidyCode.HeaderText = "Subsidy Code";
-            this.SubsidyCode.Name = "SubsidyCode";
-            this.SubsidyCode.ReadOnly = true;
-            // 
-            // Customer
-            // 
-            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            // 
-            // DebitAmount
-            // 
-            this.DebitAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DebitAmount.HeaderText = "Debit Amount";
-            this.DebitAmount.Name = "DebitAmount";
-            this.DebitAmount.ReadOnly = true;
-            // 
-            // CreditAmount
-            // 
-            this.CreditAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreditAmount.HeaderText = "Credit Amount";
-            this.CreditAmount.Name = "CreditAmount";
-            this.CreditAmount.ReadOnly = true;
-            // 
-            // Particulars
-            // 
-            this.Particulars.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Particulars.HeaderText = "Particulars";
-            this.Particulars.Name = "Particulars";
-            this.Particulars.ReadOnly = true;
-            // 
-            // User
-            // 
-            this.User.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.User.HeaderText = "User";
-            this.User.Name = "User";
-            this.User.ReadOnly = true;
-            // 
             // lblCurrentUser
             // 
             this.lblCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCurrentUser.AutoSize = true;
-            this.lblCurrentUser.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblCurrentUser.Location = new System.Drawing.Point(122, 597);
+            this.lblCurrentUser.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.lblCurrentUser.Location = new System.Drawing.Point(146, 10);
             this.lblCurrentUser.Name = "lblCurrentUser";
-            this.lblCurrentUser.Size = new System.Drawing.Size(107, 20);
+            this.lblCurrentUser.Size = new System.Drawing.Size(131, 22);
             this.lblCurrentUser.TabIndex = 13;
             this.lblCurrentUser.Text = "#CurrentUser";
             // 
@@ -453,20 +338,149 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(15, 598);
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(14, 11);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 18);
+            this.label8.Size = new System.Drawing.Size(126, 23);
             this.label8.TabIndex = 12;
             this.label8.Text = "Current User:";
+            // 
+            // colUser
+            // 
+            this.colUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colUser.FillWeight = 101.8966F;
+            this.colUser.HeaderText = "User";
+            this.colUser.Name = "colUser";
+            this.colUser.ReadOnly = true;
+            // 
+            // colParticulars
+            // 
+            this.colParticulars.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colParticulars.FillWeight = 103.5104F;
+            this.colParticulars.HeaderText = "Particulars";
+            this.colParticulars.Name = "colParticulars";
+            this.colParticulars.ReadOnly = true;
+            // 
+            // colCredit
+            // 
+            this.colCredit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCredit.FillWeight = 104.0708F;
+            this.colCredit.HeaderText = "Credit";
+            this.colCredit.Name = "colCredit";
+            this.colCredit.ReadOnly = true;
+            // 
+            // colDebit
+            // 
+            this.colDebit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDebit.FillWeight = 105.4602F;
+            this.colDebit.HeaderText = "Debit";
+            this.colDebit.Name = "colDebit";
+            this.colDebit.ReadOnly = true;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomer.FillWeight = 106.9758F;
+            this.colCustomer.HeaderText = "Customer";
+            this.colCustomer.Name = "colCustomer";
+            this.colCustomer.ReadOnly = true;
+            // 
+            // colSubsidyCode
+            // 
+            this.colSubsidyCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colSubsidyCode.FillWeight = 109.4062F;
+            this.colSubsidyCode.HeaderText = "Subsidy Code";
+            this.colSubsidyCode.Name = "colSubsidyCode";
+            this.colSubsidyCode.ReadOnly = true;
+            // 
+            // colTimeStamp
+            // 
+            this.colTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTimeStamp.FillWeight = 110.8348F;
+            this.colTimeStamp.HeaderText = "Time Stamp";
+            this.colTimeStamp.Name = "colTimeStamp";
+            this.colTimeStamp.ReadOnly = true;
+            // 
+            // colId
+            // 
+            this.colId.FillWeight = 57.84526F;
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // dgvPaymentSubsidy
+            // 
+            this.dgvPaymentSubsidy.AllowUserToAddRows = false;
+            this.dgvPaymentSubsidy.AllowUserToDeleteRows = false;
+            this.dgvPaymentSubsidy.AllowUserToResizeRows = false;
+            this.dgvPaymentSubsidy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPaymentSubsidy.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPaymentSubsidy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            this.dgvPaymentSubsidy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPaymentSubsidy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colTimeStamp,
+            this.colSubsidyCode,
+            this.colCustomer,
+            this.colDebit,
+            this.colCredit,
+            this.colParticulars,
+            this.colUser});
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle26;
+            this.dgvPaymentSubsidy.Location = new System.Drawing.Point(0, 189);
+            this.dgvPaymentSubsidy.Name = "dgvPaymentSubsidy";
+            this.dgvPaymentSubsidy.ReadOnly = true;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            this.dgvPaymentSubsidy.RowHeadersVisible = false;
+            this.dgvPaymentSubsidy.RowTemplate.Height = 24;
+            this.dgvPaymentSubsidy.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvPaymentSubsidy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPaymentSubsidy.Size = new System.Drawing.Size(1384, 399);
+            this.dgvPaymentSubsidy.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.SystemColors.Control;
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.lblCurrentUser);
+            this.panel6.Location = new System.Drawing.Point(0, 584);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1384, 44);
+            this.panel6.TabIndex = 15;
             // 
             // PaymentSubsidyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1382, 781);
-            this.Controls.Add(this.lblCurrentUser);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.dgvPaymentSubsidy);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -491,8 +505,9 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentSubsidy)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -510,7 +525,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Button btnCloseDate;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtSubsidyCode;
@@ -518,17 +532,19 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.DataGridView dgvPaymentSubsidy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeStamp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubsidyCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DebitAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreditAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Particulars;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblCurrentUser;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colParticulars;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCredit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDebit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSubsidyCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTimeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridView dgvPaymentSubsidy;
+        private System.Windows.Forms.Panel panel6;
     }
 }
