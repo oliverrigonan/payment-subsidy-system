@@ -43,7 +43,7 @@ namespace PaymentSubsidySystem
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
 
-            Close();
+            Hide();
         }
 
         public void createPaymentSubsidyForm()
