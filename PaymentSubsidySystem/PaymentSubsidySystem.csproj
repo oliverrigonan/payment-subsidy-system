@@ -87,6 +87,12 @@
     <Compile Include="CustomerCodeForm.Designer.cs">
       <DependentUpon>CustomerCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerInformationForm.Designer.cs">
+      <DependentUpon>CustomerInformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\pos13.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="ConnectionStringSettingsForm.resx">
       <DependentUpon>ConnectionStringSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerInformationForm.resx">
+      <DependentUpon>CustomerInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>

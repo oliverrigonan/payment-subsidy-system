@@ -86,14 +86,10 @@ namespace PaymentSubsidySystem
                             db.TrnPaymentSubsidies.InsertOnSubmit(newPaymentSubsidy);
                             db.SubmitChanges();
 
-                            db.SubmitChanges();
-
                             Close();
 
-                            paymentSubsidyForm.createPaymentSubsidyForm();
-
-                            paymentSubsidyForm.subsidyCode = "";
-                            paymentSubsidyForm.emptySubsidyCode();
+                            CustomerInformationForm customerInformationForm = new CustomerInformationForm(paymentSubsidyForm, paymentSubsidies.FirstOrDefault().SubsidyCode, filterDate);
+                            customerInformationForm.ShowDialog();
                         }
                     }
                     else

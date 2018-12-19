@@ -155,16 +155,11 @@ namespace PaymentSubsidySystem
                     String subsidyCodeString = txtSubsidyCode.Text;
                     filterDate = dtpDate.Value.Date;
 
-                    var previousPaymentSubsidies = from d in db.TrnPaymentSubsidies
-                                                   where d.Date < filterDate
-                                                   && d.SubsidyCode.Equals(subsidyCodeString)
-                                                   select d;
+                    var customer = from d in db.MstCustomers
+                                   where d.CustomerCode.Equals(subsidyCodeString)
+                                   select d;
 
-                    if (previousPaymentSubsidies.Any())
-                    {
-                        MessageBox.Show("Subsidy code already exist from the previous date.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
+                    if (customer.Any())
                     {
                         var currentPaymentSubsidies = from d in db.TrnPaymentSubsidies
                                                       where d.Date == filterDate
@@ -182,9 +177,30 @@ namespace PaymentSubsidySystem
                         {
                             subsidyCode = subsidyCodeString;
 
-                            CustomerCodeForm customerCodeForm = new CustomerCodeForm(this, loginForm);
-                            customerCodeForm.ShowDialog();
+                            var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
+
+                            Data.TrnPaymentSubsidy newPaymentSubsidy = new Data.TrnPaymentSubsidy
+                            {
+                                CustomerId = customer.FirstOrDefault().Id,
+                                Date = filterDate,
+                                SubsidyCode = subsidyCodeString,
+                                DebitAmount = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
+                                CreditAmount = 0,
+                                Particulars = "Initial Balance",
+                                UserId = loginForm.currentUserId,
+                                TimeStamp = DateTime.Now
+                            };
+
+                            db.TrnPaymentSubsidies.InsertOnSubmit(newPaymentSubsidy);
+                            db.SubmitChanges();
+
+                            CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, currentPaymentSubsidies.FirstOrDefault().SubsidyCode, filterDate);
+                            customerInformationForm.ShowDialog();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer code not found.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
