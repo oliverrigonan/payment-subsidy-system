@@ -40,6 +40,9 @@
             this.btnCustomerDetailOK = new System.Windows.Forms.Button();
             this.txtBalance = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnCustomerDetailCancel = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,10 +70,10 @@
             // txtCustomerCode
             // 
             this.txtCustomerCode.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtCustomerCode.Location = new System.Drawing.Point(189, 89);
+            this.txtCustomerCode.Location = new System.Drawing.Point(207, 89);
             this.txtCustomerCode.Name = "txtCustomerCode";
             this.txtCustomerCode.ReadOnly = true;
-            this.txtCustomerCode.Size = new System.Drawing.Size(458, 32);
+            this.txtCustomerCode.Size = new System.Drawing.Size(440, 32);
             this.txtCustomerCode.TabIndex = 23;
             this.txtCustomerCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerCode_KeyPress);
             // 
@@ -78,7 +81,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(70, 92);
+            this.lblUsername.Location = new System.Drawing.Point(111, 92);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(71, 23);
             this.lblUsername.TabIndex = 22;
@@ -87,10 +90,10 @@
             // txtCustomer
             // 
             this.txtCustomer.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtCustomer.Location = new System.Drawing.Point(189, 127);
+            this.txtCustomer.Location = new System.Drawing.Point(207, 127);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.ReadOnly = true;
-            this.txtCustomer.Size = new System.Drawing.Size(458, 32);
+            this.txtCustomer.Size = new System.Drawing.Size(440, 32);
             this.txtCustomer.TabIndex = 25;
             this.txtCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomer_KeyPress);
             // 
@@ -98,7 +101,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.label1.Location = new System.Drawing.Point(32, 130);
+            this.label1.Location = new System.Drawing.Point(73, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 23);
             this.label1.TabIndex = 24;
@@ -107,11 +110,11 @@
             // txtCustomerAddress
             // 
             this.txtCustomerAddress.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtCustomerAddress.Location = new System.Drawing.Point(189, 165);
+            this.txtCustomerAddress.Location = new System.Drawing.Point(207, 165);
             this.txtCustomerAddress.Multiline = true;
             this.txtCustomerAddress.Name = "txtCustomerAddress";
             this.txtCustomerAddress.ReadOnly = true;
-            this.txtCustomerAddress.Size = new System.Drawing.Size(458, 111);
+            this.txtCustomerAddress.Size = new System.Drawing.Size(440, 111);
             this.txtCustomerAddress.TabIndex = 27;
             this.txtCustomerAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerAddress_KeyPress);
             // 
@@ -119,11 +122,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.label2.Location = new System.Drawing.Point(48, 168);
+            this.label2.Location = new System.Drawing.Point(47, 168);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 23);
+            this.label2.Size = new System.Drawing.Size(135, 23);
             this.label2.TabIndex = 26;
-            this.label2.Text = "Address:";
+            this.label2.Text = "Department:";
             // 
             // btnCustomerDetailOK
             // 
@@ -131,7 +134,7 @@
             this.btnCustomerDetailOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerDetailOK.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnCustomerDetailOK.ForeColor = System.Drawing.Color.White;
-            this.btnCustomerDetailOK.Location = new System.Drawing.Point(536, 334);
+            this.btnCustomerDetailOK.Location = new System.Drawing.Point(419, 390);
             this.btnCustomerDetailOK.Name = "btnCustomerDetailOK";
             this.btnCustomerDetailOK.Size = new System.Drawing.Size(111, 51);
             this.btnCustomerDetailOK.TabIndex = 28;
@@ -142,10 +145,10 @@
             // txtBalance
             // 
             this.txtBalance.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.txtBalance.Location = new System.Drawing.Point(189, 282);
+            this.txtBalance.Location = new System.Drawing.Point(207, 282);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.ReadOnly = true;
-            this.txtBalance.Size = new System.Drawing.Size(458, 32);
+            this.txtBalance.Size = new System.Drawing.Size(440, 32);
             this.txtBalance.TabIndex = 29;
             this.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBalance_KeyPress);
@@ -154,18 +157,55 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.label4.Location = new System.Drawing.Point(44, 285);
+            this.label4.Location = new System.Drawing.Point(85, 285);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 23);
             this.label4.TabIndex = 30;
             this.label4.Text = "Balance:";
+            // 
+            // btnCustomerDetailCancel
+            // 
+            this.btnCustomerDetailCancel.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCustomerDetailCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomerDetailCancel.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnCustomerDetailCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCustomerDetailCancel.Location = new System.Drawing.Point(536, 390);
+            this.btnCustomerDetailCancel.Name = "btnCustomerDetailCancel";
+            this.btnCustomerDetailCancel.Size = new System.Drawing.Size(111, 51);
+            this.btnCustomerDetailCancel.TabIndex = 31;
+            this.btnCustomerDetailCancel.Text = "Cancel";
+            this.btnCustomerDetailCancel.UseVisualStyleBackColor = false;
+            this.btnCustomerDetailCancel.Click += new System.EventHandler(this.btnCustomerDetailCancel_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.label5.Location = new System.Drawing.Point(89, 323);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 23);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Amount:";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.txtAmount.Location = new System.Drawing.Point(207, 320);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(440, 32);
+            this.txtAmount.TabIndex = 32;
+            this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // CustomerInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(659, 397);
+            this.ClientSize = new System.Drawing.Size(659, 453);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.btnCustomerDetailCancel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBalance);
             this.Controls.Add(this.btnCustomerDetailOK);
@@ -203,5 +243,8 @@
         private System.Windows.Forms.Button btnCustomerDetailOK;
         private System.Windows.Forms.TextBox txtBalance;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCustomerDetailCancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAmount;
     }
 }

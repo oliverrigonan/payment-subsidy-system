@@ -26,6 +26,26 @@ namespace PaymentSubsidySystem
             loginForm = form1;
 
             lblSubsidyCode.Text = paymentSubsidyForm.subsidyCode;
+
+            DateTime filterDate = paymentSubsidyForm.filterDate;
+            var paymentSubsidies = from d in db.TrnPaymentSubsidies
+                                   where d.SubsidyCode.Equals(lblSubsidyCode.Text)
+                                   && d.Date == filterDate
+                                   select d;
+
+            if (paymentSubsidies.Any())
+            {
+                Decimal totalDebitAmount = paymentSubsidies.Sum(d => d.DebitAmount);
+                Decimal totalCreditAmount = paymentSubsidies.Sum(d => d.CreditAmount);
+
+                Decimal totalAmount = totalDebitAmount - totalCreditAmount;
+
+                txtEnterAmountBalance.Text = totalAmount.ToString("#,##0.00");
+            }
+            else
+            {
+                txtEnterAmountBalance.Text = (0).ToString("#,##0.00");
+            }
         }
 
         private void btnEnterAmountCancel_Click(object sender, EventArgs e)
@@ -88,8 +108,8 @@ namespace PaymentSubsidySystem
 
                             Close();
 
-                            CustomerInformationForm customerInformationForm = new CustomerInformationForm(paymentSubsidyForm, paymentSubsidies.FirstOrDefault().SubsidyCode, filterDate);
-                            customerInformationForm.ShowDialog();
+                            //CustomerInformationForm customerInformationForm = new CustomerInformationForm(paymentSubsidyForm, paymentSubsidies.FirstOrDefault().SubsidyCode, filterDate);
+                            //customerInformationForm.ShowDialog();
                         }
                     }
                     else

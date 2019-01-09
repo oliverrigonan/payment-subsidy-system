@@ -161,42 +161,20 @@ namespace PaymentSubsidySystem
 
                     if (customer.Any())
                     {
-                        var currentPaymentSubsidies = from d in db.TrnPaymentSubsidies
-                                                      where d.Date == filterDate
-                                                      && d.SubsidyCode.Equals(subsidyCodeString)
-                                                      select d;
+                        var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
 
-                        if (currentPaymentSubsidies.Any())
+                        Entities.CustomerDetail customerDetail = new Entities.CustomerDetail
                         {
-                            subsidyCode = currentPaymentSubsidies.FirstOrDefault().SubsidyCode;
+                            Id = customer.FirstOrDefault().Id,
+                            Code = customer.FirstOrDefault().CustomerCode,
+                            Customer = customer.FirstOrDefault().Customer,
+                            Department = customer.FirstOrDefault().Address,
+                            Balance = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
+                            Amount = 0
+                        };
 
-                            EnterAmountForm enterAmountForm = new EnterAmountForm(this, loginForm);
-                            enterAmountForm.ShowDialog();
-                        }
-                        else
-                        {
-                            subsidyCode = subsidyCodeString;
-
-                            var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
-
-                            Data.TrnPaymentSubsidy newPaymentSubsidy = new Data.TrnPaymentSubsidy
-                            {
-                                CustomerId = customer.FirstOrDefault().Id,
-                                Date = filterDate,
-                                SubsidyCode = subsidyCodeString,
-                                DebitAmount = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
-                                CreditAmount = 0,
-                                Particulars = "Initial Balance",
-                                UserId = loginForm.currentUserId,
-                                TimeStamp = DateTime.Now
-                            };
-
-                            db.TrnPaymentSubsidies.InsertOnSubmit(newPaymentSubsidy);
-                            db.SubmitChanges();
-
-                            CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, currentPaymentSubsidies.FirstOrDefault().SubsidyCode, filterDate);
-                            customerInformationForm.ShowDialog();
-                        }
+                        CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customerDetail, filterDate);
+                        customerInformationForm.ShowDialog();
                     }
                     else
                     {
@@ -235,6 +213,12 @@ namespace PaymentSubsidySystem
         private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnGenerateCSV_Click(object sender, EventArgs e)
+        {
+            GenerateCSVForm generateCSVForm = new GenerateCSVForm();
+            generateCSVForm.ShowDialog();
         }
     }
 }

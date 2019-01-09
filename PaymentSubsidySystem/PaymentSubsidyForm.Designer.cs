@@ -65,6 +65,7 @@
             this.colParticulars = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnGenerateCSV = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,6 +81,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.btnGenerateCSV);
             this.panel1.Controls.Add(this.btnSettings);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.label1);
@@ -96,7 +98,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.Location = new System.Drawing.Point(1092, 11);
+            this.btnSettings.Location = new System.Drawing.Point(1102, 11);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(131, 44);
             this.btnSettings.TabIndex = 11;
@@ -320,7 +322,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.txtSearch.Location = new System.Drawing.Point(117, 15);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1106, 32);
+            this.txtSearch.Size = new System.Drawing.Size(1116, 32);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -475,6 +477,22 @@
             this.panel6.Size = new System.Drawing.Size(1384, 44);
             this.panel6.TabIndex = 15;
             // 
+            // btnGenerateCSV
+            // 
+            this.btnGenerateCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateCSV.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnGenerateCSV.FlatAppearance.BorderSize = 0;
+            this.btnGenerateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateCSV.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.btnGenerateCSV.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateCSV.Location = new System.Drawing.Point(904, 11);
+            this.btnGenerateCSV.Name = "btnGenerateCSV";
+            this.btnGenerateCSV.Size = new System.Drawing.Size(192, 44);
+            this.btnGenerateCSV.TabIndex = 12;
+            this.btnGenerateCSV.Text = "Generate CSV";
+            this.btnGenerateCSV.UseVisualStyleBackColor = false;
+            this.btnGenerateCSV.Click += new System.EventHandler(this.btnGenerateCSV_Click);
+            // 
             // PaymentSubsidyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -548,5 +566,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCredit;
         private System.Windows.Forms.DataGridViewTextBoxColumn colParticulars;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
+        private System.Windows.Forms.Button btnGenerateCSV;
     }
 }

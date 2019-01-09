@@ -104,7 +104,14 @@
     <Compile Include="EnterAmountForm.Designer.cs">
       <DependentUpon>EnterAmountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\CustomerDetail.cs" />
     <Compile Include="Entities\Settings.cs" />
+    <Compile Include="GenerateCSVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateCSVForm.Designer.cs">
+      <DependentUpon>GenerateCSVForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerInformationForm.resx">
       <DependentUpon>CustomerInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateCSVForm.resx">
+      <DependentUpon>GenerateCSVForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
