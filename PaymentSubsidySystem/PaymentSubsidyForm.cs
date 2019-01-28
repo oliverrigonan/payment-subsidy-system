@@ -157,6 +157,7 @@ namespace PaymentSubsidySystem
 
                     var customer = from d in db.MstCustomers
                                    where d.CustomerCode.Equals(subsidyCodeString)
+                                   && d.IsLocked == true
                                    select d;
 
                     if (customer.Any())

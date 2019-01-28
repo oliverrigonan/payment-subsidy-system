@@ -72,7 +72,7 @@ namespace PaymentSubsidySystem
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(fbdGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\PaymentSubsidyReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString());
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\PaymentSubsidyReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
