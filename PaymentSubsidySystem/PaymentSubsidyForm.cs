@@ -244,6 +244,18 @@ namespace PaymentSubsidySystem
 			}
 		}
 
+		private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
+		{
+			dgvPaymentSubsidy.Rows.Clear();
+			dgvPaymentSubsidy.Refresh();
+
+			if (dgvPaymentSubsidy.Rows.Count == 0)
+			{
+				searchSubsidyCode();
+			}
+
+		}
+
 		public void searchSubsidyCode()
 		{
 			try
@@ -297,17 +309,6 @@ namespace PaymentSubsidySystem
 			}
 		}
 
-		private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
-		{
 
-			dgvPaymentSubsidy.Rows.Clear();
-			dgvPaymentSubsidy.Refresh();
-
-			if (dgvPaymentSubsidy.Rows.Count == 0)
-			{
-				searchSubsidyCode();
-			}
-
-		}
 	}
 }
