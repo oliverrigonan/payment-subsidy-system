@@ -15,211 +15,299 @@ using System.Windows.Forms;
 
 namespace PaymentSubsidySystem
 {
-    public partial class PaymentSubsidyForm : Form
-    {
-        private Data.pos13DataContext db;
+	public partial class PaymentSubsidyForm : Form
+	{
+		private Data.pos13DataContext db;
 
-        public String subsidyCode = "";
-        public DateTime filterDate = DateTime.Today;
-        public LoginForm loginForm;
+		public String subsidyCode = "";
+		public DateTime filterDate = DateTime.Today;
+		public LoginForm loginForm;
+		public String filterSubsidyCode = "";
 
-        public PaymentSubsidyForm(LoginForm form)
-        {
-            InitializeComponent();
-            db = new Data.pos13DataContext(Settings.GetConnectionString());
+		public PaymentSubsidyForm(LoginForm form)
+		{
+			InitializeComponent();
+			db = new Data.pos13DataContext(Settings.GetConnectionString());
 
-            createPaymentSubsidyForm();
-            ActiveControl = txtSubsidyCode;
+			createPaymentSubsidyForm();
+			ActiveControl = txtSubsidyCode;
 
-            loginForm = form;
+			loginForm = form;
 
-            lblCurrentUser.Text = loginForm.currentUser;
+			lblCurrentUser.Text = loginForm.currentUser;
 
-            getFooterDetails();
-        }
+			getFooterDetails();
+		}
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+		private void btnLogout_Click(object sender, EventArgs e)
+		{
+			LoginForm loginForm = new LoginForm();
+			loginForm.Show();
 
-            Hide();
-        }
+			Hide();
+		}
 
-        public void createPaymentSubsidyForm()
-        {
-            try
-            {
-                dgvPaymentSubsidy.Rows.Clear();
-                dgvPaymentSubsidy.Refresh();
+		public void createPaymentSubsidyForm()
+		{
+			try
+			{
+				dgvPaymentSubsidy.Rows.Clear();
+				dgvPaymentSubsidy.Refresh();
 
-                dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                String searchString = txtSearch.Text;
-                filterDate = dtpDate.Value.Date;
+				String searchString = txtSearch.Text;
+				filterDate = dtpDate.Value.Date;
 
-                var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-                                       where d.Date == filterDate
-                                       && (d.SubsidyCode.Contains(searchString)
-                                       || d.MstCustomer.Customer.Contains(searchString)
-                                       || d.Particulars.Contains(searchString)
-                                       || d.MstUser.FullName.Contains(searchString))
-                                       select d;
+				var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
+									   where d.Date == filterDate
+									   && (d.SubsidyCode.Contains(searchString)
+									   || d.MstCustomer.Customer.Contains(searchString)
+									   || d.Particulars.Contains(searchString)
+									   || d.MstUser.FullName.Contains(searchString))
+									   select d;
 
-                if (paymentSubsidies.Any())
-                {
-                    db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
+				if (paymentSubsidies.Any())
+				{
+					db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
 
-                    Decimal totalDebit = 0, totalCredit = 0;
-                    foreach (var paymentSubsidy in paymentSubsidies)
-                    {
-                        dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
-                            paymentSubsidy.TimeStamp,
-                            paymentSubsidy.SubsidyCode,
-                            paymentSubsidy.MstCustomer.Customer,
-                            paymentSubsidy.DebitAmount.ToString("#,##0.00"),
-                            paymentSubsidy.CreditAmount.ToString("#,##0.00"),
-                            paymentSubsidy.Particulars,
-                            paymentSubsidy.MstUser.FullName);
+					Decimal totalDebit = 0, totalCredit = 0;
+					foreach (var paymentSubsidy in paymentSubsidies)
+					{
+						dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
+							paymentSubsidy.TimeStamp,
+							paymentSubsidy.SubsidyCode,
+							paymentSubsidy.MstCustomer.Customer,
+							paymentSubsidy.DebitAmount.ToString("#,##0.00"),
+							paymentSubsidy.CreditAmount.ToString("#,##0.00"),
+							paymentSubsidy.Particulars,
+							paymentSubsidy.MstUser.FullName);
 
-                        totalDebit += paymentSubsidy.DebitAmount;
-                        totalCredit += paymentSubsidy.CreditAmount;
-                    }
+						totalDebit += paymentSubsidy.DebitAmount;
+						totalCredit += paymentSubsidy.CreditAmount;
+					}
 
-                    dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
+					dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
 
-                    dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-                    dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-                    dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+					dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+					dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
 
-                    dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+					dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-            filterDate = dtpDate.Value.Date;
+		private void dtpDate_ValueChanged(object sender, EventArgs e)
+		{
+			filterDate = dtpDate.Value.Date;
 
-            dgvPaymentSubsidy.Rows.Clear();
-            dgvPaymentSubsidy.Refresh();
+			dgvPaymentSubsidy.Rows.Clear();
+			dgvPaymentSubsidy.Refresh();
 
-            if (dgvPaymentSubsidy.Rows.Count == 0)
-            {
-                createPaymentSubsidyForm();
-            }
-        }
+			if (dgvPaymentSubsidy.Rows.Count == 0)
+			{
+				createPaymentSubsidyForm();
+			}
+		}
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            dgvPaymentSubsidy.Rows.Clear();
-            dgvPaymentSubsidy.Refresh();
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			dgvPaymentSubsidy.Rows.Clear();
+			dgvPaymentSubsidy.Refresh();
 
-            if (dgvPaymentSubsidy.Rows.Count == 0)
-            {
-                createPaymentSubsidyForm();
-            }
-        }
+			if (dgvPaymentSubsidy.Rows.Count == 0)
+			{
+				createPaymentSubsidyForm();
+			}
+		}
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                dgvPaymentSubsidy.Rows.Clear();
-                dgvPaymentSubsidy.Refresh();
+		private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == Convert.ToChar(Keys.Enter))
+			{
+				dgvPaymentSubsidy.Rows.Clear();
+				dgvPaymentSubsidy.Refresh();
 
-                if (dgvPaymentSubsidy.Rows.Count == 0)
-                {
-                    createPaymentSubsidyForm();
-                }
-            }
-        }
+				if (dgvPaymentSubsidy.Rows.Count == 0)
+				{
+					createPaymentSubsidyForm();
+				}
+			}
+		}
 
-        private void txtSubsidyCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                if (txtSubsidyCode.Text.Equals(""))
-                {
-                    MessageBox.Show("Subsidy code is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    String subsidyCodeString = txtSubsidyCode.Text;
-                    filterDate = dtpDate.Value.Date;
+		private void txtSubsidyCode_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == Convert.ToChar(Keys.Enter))
+			{
+				if (txtSubsidyCode.Text.Equals(""))
+				{
+					MessageBox.Show("Subsidy code is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				else
+				{
+					String subsidyCodeString = txtSubsidyCode.Text;
+					filterDate = dtpDate.Value.Date;
 
-                    var customer = from d in db.MstCustomers
-                                   where d.CustomerCode.Equals(subsidyCodeString)
-                                   && d.IsLocked == true
-                                   select d;
+					var customer = from d in db.MstCustomers
+								   where d.CustomerCode.Equals(subsidyCodeString)
+								   && d.IsLocked == true
+								   select d;
 
-                    if (customer.Any())
-                    {
-                        var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
+					if (customer.Any())
+					{
+						var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
 
-                        Entities.CustomerDetail customerDetail = new Entities.CustomerDetail
-                        {
-                            Id = customer.FirstOrDefault().Id,
-                            Code = customer.FirstOrDefault().CustomerCode,
-                            Customer = customer.FirstOrDefault().Customer,
-                            Department = customer.FirstOrDefault().Address,
-                            Balance = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
-                            Amount = 0
-                        };
+						Entities.CustomerDetail customerDetail = new Entities.CustomerDetail
+						{
+							Id = customer.FirstOrDefault().Id,
+							Code = customer.FirstOrDefault().CustomerCode,
+							Customer = customer.FirstOrDefault().Customer,
+							Department = customer.FirstOrDefault().Address,
+							Balance = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
+							Amount = 0
+						};
 
-                        CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customerDetail, filterDate);
-                        customerInformationForm.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Customer code not found.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
+						CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customerDetail, filterDate);
+						customerInformationForm.ShowDialog();
+					}
+					else
+					{
+						MessageBox.Show("Customer code not found.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
 
-        public void emptySubsidyCode()
-        {
-            txtSubsidyCode.Text = subsidyCode;
-        }
+		public void emptySubsidyCode()
+		{
+			txtSubsidyCode.Text = subsidyCode;
+		}
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            SettingsForm settingsForm = new SettingsForm(this, loginForm);
-            settingsForm.ShowDialog();
-        }
+		private void btnSettings_Click(object sender, EventArgs e)
+		{
+			SettingsForm settingsForm = new SettingsForm(this, loginForm);
+			settingsForm.ShowDialog();
+		}
 
-        public void getFooterDetails()
-        {
-            String settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings.json");
+		public void getFooterDetails()
+		{
+			String settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings.json");
 
-            String json;
-            using (StreamReader trmRead = new StreamReader(settingsPath)) { json = trmRead.ReadToEnd(); }
+			String json;
+			using (StreamReader trmRead = new StreamReader(settingsPath)) { json = trmRead.ReadToEnd(); }
 
-            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-            Entities.Settings settings = javaScriptSerializer.Deserialize<Entities.Settings>(json);
+			JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+			Entities.Settings settings = javaScriptSerializer.Deserialize<Entities.Settings>(json);
 
-            lblPaymentSubsidySoftware.Text = settings.Software;
-            lblPaymentSubsidyVersion.Text = settings.Version;
-            lblPaymentSubsidyDeveloper.Text = settings.Developer;
-        }
+			lblPaymentSubsidySoftware.Text = settings.Software;
+			lblPaymentSubsidyVersion.Text = settings.Version;
+			lblPaymentSubsidyDeveloper.Text = settings.Developer;
+		}
 
-        private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
+		private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			Application.Exit();
+		}
 
-        private void btnGenerateCSV_Click(object sender, EventArgs e)
-        {
-            GenerateCSVForm generateCSVForm = new GenerateCSVForm();
-            generateCSVForm.ShowDialog();
-        }
-    }
+		private void btnGenerateCSV_Click(object sender, EventArgs e)
+		{
+			GenerateCSVForm generateCSVForm = new GenerateCSVForm();
+			generateCSVForm.ShowDialog();
+		}
+
+		private void txtSubsidyCodeSearch_TextChanged(object sender, EventArgs e)
+		{
+			filterSubsidyCode = txtSubsidyCodeSearch.Text;
+
+
+		}
+
+		private void txtSubsidyCodeSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == Convert.ToChar(Keys.Enter))
+			{
+				dgvPaymentSubsidy.Rows.Clear();
+				dgvPaymentSubsidy.Refresh();
+
+				if (dgvPaymentSubsidy.Rows.Count == 0)
+				{
+					searchSubsidyCode();
+				}
+			}
+		}
+
+		public void searchSubsidyCode()
+		{
+			try
+			{
+				dgvPaymentSubsidy.Rows.Clear();
+				dgvPaymentSubsidy.Refresh();
+
+				dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+				dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+				String searchString = txtSubsidyCodeSearch.Text;
+
+				var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
+									   where d.SubsidyCode.Contains(searchString)
+									   select d;
+
+				if (paymentSubsidies.Any())
+				{
+					db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
+
+					Decimal totalDebit = 0, totalCredit = 0;
+					foreach (var paymentSubsidy in paymentSubsidies)
+					{
+						dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
+							paymentSubsidy.TimeStamp,
+							paymentSubsidy.SubsidyCode,
+							paymentSubsidy.MstCustomer.Customer,
+							paymentSubsidy.DebitAmount.ToString("#,##0.00"),
+							paymentSubsidy.CreditAmount.ToString("#,##0.00"),
+							paymentSubsidy.Particulars,
+							paymentSubsidy.MstUser.FullName);
+
+						totalDebit += paymentSubsidy.DebitAmount;
+						totalCredit += paymentSubsidy.CreditAmount;
+					}
+
+					dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
+
+					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+					dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+					dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+
+					dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
+		{
+
+			dgvPaymentSubsidy.Rows.Clear();
+			dgvPaymentSubsidy.Refresh();
+
+			if (dgvPaymentSubsidy.Rows.Count == 0)
+			{
+				searchSubsidyCode();
+			}
+
+		}
+	}
 }
