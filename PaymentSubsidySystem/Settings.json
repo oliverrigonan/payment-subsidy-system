@@ -1,5 +1,5 @@
 ﻿{
-  "ConnectionString": "Data Source=localhost;Initial Catalog=pos13;Persist Security Info=True;User ID=sa;Password=innosoft",
+  "ConnectionString": "Data Source=localhost;Initial Catalog=easypos_sonnets;Persist Security Info=True;User ID=sa;Password=innosoft",
   "Software": "Payment Subsidy System",
   "Version": "1.20181204.NOR",
   "Developer": "Easyfis Corporation"

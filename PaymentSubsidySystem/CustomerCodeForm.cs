@@ -85,7 +85,7 @@ namespace PaymentSubsidySystem
 
                         Close();
 
-                        paymentSubsidyForm.createPaymentSubsidyForm();
+                        paymentSubsidyForm.CreateDgvPaymentSubsidy();
 
                         paymentSubsidyForm.subsidyCode = "";
                         paymentSubsidyForm.emptySubsidyCode();

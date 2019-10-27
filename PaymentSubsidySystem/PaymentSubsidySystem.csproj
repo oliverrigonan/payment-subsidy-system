@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HomeBi.Libraries.PagedList, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -94,6 +97,7 @@
     </Compile>
     <Compile Include="Entities\CustomerDetail.cs" />
     <Compile Include="Entities\Settings.cs" />
+    <Compile Include="Entities\DgvTrnPaymentSubsidy.cs" />
     <Compile Include="GenerateCSVForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +166,7 @@
       <LastGenOutput>pos13.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

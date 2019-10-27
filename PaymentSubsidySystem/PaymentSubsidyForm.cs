@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeBi.Libraries.PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,300 +16,416 @@ using System.Windows.Forms;
 
 namespace PaymentSubsidySystem
 {
-	public partial class PaymentSubsidyForm : Form
-	{
-		private Data.pos13DataContext db;
+    public partial class PaymentSubsidyForm : Form
+    {
+        private Data.pos13DataContext db;
+        public LoginForm loginForm;
 
-		public String subsidyCode = "";
-		public DateTime filterDate = DateTime.Today;
-		public LoginForm loginForm;
-		public String filterSubsidyCode = "";
+        public List<Entities.DgvTrnPaymentSubsidy> paymentSubsidyList;
+        public BindingSource dataPaymentSubsidyListSource = new BindingSource();
+        public PagedList<Entities.DgvTrnPaymentSubsidy> pageList;
+        public Int32 pageNumber = 1;
+        public Int32 pageSize = 20;
 
-		public PaymentSubsidyForm(LoginForm form)
-		{
-			InitializeComponent();
-			db = new Data.pos13DataContext(Settings.GetConnectionString());
+        public String subsidyCode = "";
+        public DateTime filterDate = DateTime.Today;
+        public String filterSubsidyCode = "";
+        public Boolean filterSubcidyCodeFlag = false;
 
-			createPaymentSubsidyForm();
-			ActiveControl = txtSubsidyCode;
+        public Decimal totalDebitAmount = 0;
+        public Decimal totalCreditAmount = 0;
 
-			loginForm = form;
+        public PaymentSubsidyForm(LoginForm form)
+        {
+            InitializeComponent();
+            db = new Data.pos13DataContext(Settings.GetConnectionString());
 
-			lblCurrentUser.Text = loginForm.currentUser;
+            CreateDgvPaymentSubsidy();
+            ActiveControl = txtSubsidyCode;
 
-			getFooterDetails();
-		}
+            loginForm = form;
 
-		private void btnLogout_Click(object sender, EventArgs e)
-		{
-			LoginForm loginForm = new LoginForm();
-			loginForm.Show();
+            lblCurrentUser.Text = loginForm.currentUser;
 
-			Hide();
-		}
-
-		public void createPaymentSubsidyForm()
-		{
-			try
-			{
-				dgvPaymentSubsidy.Rows.Clear();
-				dgvPaymentSubsidy.Refresh();
-
-				dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-				dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-				dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-				String searchString = txtSearch.Text;
-				filterDate = dtpDate.Value.Date;
-
-				var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-									   where d.Date == filterDate
-									   && (d.SubsidyCode.Contains(searchString)
-									   || d.MstCustomer.Customer.Contains(searchString)
-									   || d.Particulars.Contains(searchString)
-									   || d.MstUser.FullName.Contains(searchString))
-									   select d;
-
-				if (paymentSubsidies.Any())
-				{
-					db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
-
-					Decimal totalDebit = 0, totalCredit = 0;
-					foreach (var paymentSubsidy in paymentSubsidies)
-					{
-						dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
-							paymentSubsidy.TimeStamp,
-							paymentSubsidy.SubsidyCode,
-							paymentSubsidy.MstCustomer.Customer,
-							paymentSubsidy.DebitAmount.ToString("#,##0.00"),
-							paymentSubsidy.CreditAmount.ToString("#,##0.00"),
-							paymentSubsidy.Particulars,
-							paymentSubsidy.MstUser.FullName);
-
-						totalDebit += paymentSubsidy.DebitAmount;
-						totalCredit += paymentSubsidy.CreditAmount;
-					}
-
-					dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
-
-					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-					dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-					dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-
-					dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
-
-		private void dtpDate_ValueChanged(object sender, EventArgs e)
-		{
-			filterDate = dtpDate.Value.Date;
-
-			dgvPaymentSubsidy.Rows.Clear();
-			dgvPaymentSubsidy.Refresh();
-
-			if (dgvPaymentSubsidy.Rows.Count == 0)
-			{
-				createPaymentSubsidyForm();
-			}
-		}
-
-		private void btnSearch_Click(object sender, EventArgs e)
-		{
-			dgvPaymentSubsidy.Rows.Clear();
-			dgvPaymentSubsidy.Refresh();
-
-			if (dgvPaymentSubsidy.Rows.Count == 0)
-			{
-				createPaymentSubsidyForm();
-			}
-		}
-
-		private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			if (e.KeyChar == Convert.ToChar(Keys.Enter))
-			{
-				dgvPaymentSubsidy.Rows.Clear();
-				dgvPaymentSubsidy.Refresh();
-
-				if (dgvPaymentSubsidy.Rows.Count == 0)
-				{
-					createPaymentSubsidyForm();
-				}
-			}
-		}
-
-		private void txtSubsidyCode_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			if (e.KeyChar == Convert.ToChar(Keys.Enter))
-			{
-				if (txtSubsidyCode.Text.Equals(""))
-				{
-					MessageBox.Show("Subsidy code is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-				else
-				{
-					String subsidyCodeString = txtSubsidyCode.Text;
-					filterDate = dtpDate.Value.Date;
-
-					var customer = from d in db.MstCustomers
-								   where d.CustomerCode.Equals(subsidyCodeString)
-								   && d.IsLocked == true
-								   select d;
-
-					if (customer.Any())
-					{
-						var defaultDebitAmount = from d in db.TrnPaymentSubsidySettings select d;
-
-						Entities.CustomerDetail customerDetail = new Entities.CustomerDetail
-						{
-							Id = customer.FirstOrDefault().Id,
-							Code = customer.FirstOrDefault().CustomerCode,
-							Customer = customer.FirstOrDefault().Customer,
-							Department = customer.FirstOrDefault().Address,
-							Balance = defaultDebitAmount.FirstOrDefault().DefaultDebitAmount,
-							Amount = 0
-						};
-
-						CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customerDetail, filterDate);
-						customerInformationForm.ShowDialog();
-					}
-					else
-					{
-						MessageBox.Show("Customer code not found.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-				}
-			}
-		}
-
-		public void emptySubsidyCode()
-		{
-			txtSubsidyCode.Text = subsidyCode;
-		}
-
-		private void btnSettings_Click(object sender, EventArgs e)
-		{
-			SettingsForm settingsForm = new SettingsForm(this, loginForm);
-			settingsForm.ShowDialog();
-		}
-
-		public void getFooterDetails()
-		{
-			String settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings.json");
-
-			String json;
-			using (StreamReader trmRead = new StreamReader(settingsPath)) { json = trmRead.ReadToEnd(); }
-
-			JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-			Entities.Settings settings = javaScriptSerializer.Deserialize<Entities.Settings>(json);
-
-			lblPaymentSubsidySoftware.Text = settings.Software;
-			lblPaymentSubsidyVersion.Text = settings.Version;
-			lblPaymentSubsidyDeveloper.Text = settings.Developer;
-		}
-
-		private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			Application.Exit();
-		}
-
-		private void btnGenerateCSV_Click(object sender, EventArgs e)
-		{
-			GenerateCSVForm generateCSVForm = new GenerateCSVForm();
-			generateCSVForm.ShowDialog();
-		}
-
-		private void txtSubsidyCodeSearch_TextChanged(object sender, EventArgs e)
-		{
-			filterSubsidyCode = txtSubsidyCodeSearch.Text;
+            getFooterDetails();
 
 
-		}
+        }
 
-		private void txtSubsidyCodeSearch_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			if (e.KeyChar == Convert.ToChar(Keys.Enter))
-			{
-				dgvPaymentSubsidy.Rows.Clear();
-				dgvPaymentSubsidy.Refresh();
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
 
-				if (dgvPaymentSubsidy.Rows.Count == 0)
-				{
-					searchSubsidyCode();
-				}
-			}
-		}
+            Hide();
+        }
 
-		private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
-		{
-			dgvPaymentSubsidy.Rows.Clear();
-			dgvPaymentSubsidy.Refresh();
+        public List<Entities.DgvTrnPaymentSubsidy> GetPaymentSubsidyListDataFilterByDateAndSearch()
+        {
+            List<Entities.DgvTrnPaymentSubsidy> rowList = new List<Entities.DgvTrnPaymentSubsidy>();
 
-			if (dgvPaymentSubsidy.Rows.Count == 0)
-			{
-				searchSubsidyCode();
-			}
+            Decimal totalDebit = 0, totalCredit = 0;
 
-		}
+            String searchString = txtSearch.Text;
+            filterDate = dtpDate.Value.Date;
 
-		public void searchSubsidyCode()
-		{
-			try
-			{
-				dgvPaymentSubsidy.Rows.Clear();
-				dgvPaymentSubsidy.Refresh();
+            var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
+                                   where d.Date == filterDate
+                                   && (d.SubsidyCode.Contains(searchString)
+                                   || d.MstCustomer.Customer.Contains(searchString)
+                                   || d.Particulars.Contains(searchString)
+                                   || d.MstUser.FullName.Contains(searchString))
+                                   select d;
 
-				dgvPaymentSubsidy.Columns["colId"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-				dgvPaymentSubsidy.Columns["colDebit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-				dgvPaymentSubsidy.Columns["colCredit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            if (paymentSubsidies.Any())
+            {
+                var rows = from d in paymentSubsidies
+                           select new Entities.DgvTrnPaymentSubsidy
+                           {
+                               ColumnId = d.Id.ToString(),
+                               ColumnTimeStamp = d.TimeStamp.ToShortDateString(),
+                               ColumnSubsidyCode = d.SubsidyCode,
+                               ColumnCustomer = d.MstCustomer.Customer,
+                               ColumnDebit = d.DebitAmount.ToString(),
+                               ColumnCredit = d.CreditAmount.ToString(),
+                               ColumnParticulars = d.Particulars,
+                               ColumnUser = d.MstUser.FullName
+                           };
 
-				String searchString = txtSubsidyCodeSearch.Text;
+                totalDebit = paymentSubsidies.Sum(d => d.DebitAmount);
+                totalCredit = paymentSubsidies.Sum(d => d.CreditAmount);
 
-				var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-									   where d.SubsidyCode.Contains(searchString)
-									   select d;
+                Entities.DgvTrnPaymentSubsidy runningTotalDebitCreditAmount = new Entities.DgvTrnPaymentSubsidy
+                {
+                    ColumnSubsidyCode = "Total Amount",
+                    ColumnDebit = totalDebit.ToString(),
+                    ColumnCredit = totalCredit.ToString()
+                };
 
-				if (paymentSubsidies.Any())
-				{
-					db.Refresh(RefreshMode.OverwriteCurrentValues, paymentSubsidies);
+                rowList = rows.ToList();
 
-					Decimal totalDebit = 0, totalCredit = 0;
-					foreach (var paymentSubsidy in paymentSubsidies)
-					{
-						dgvPaymentSubsidy.Rows.Add(paymentSubsidy.Id,
-							paymentSubsidy.TimeStamp,
-							paymentSubsidy.SubsidyCode,
-							paymentSubsidy.MstCustomer.Customer,
-							paymentSubsidy.DebitAmount.ToString("#,##0.00"),
-							paymentSubsidy.CreditAmount.ToString("#,##0.00"),
-							paymentSubsidy.Particulars,
-							paymentSubsidy.MstUser.FullName);
+                rowList.Add(runningTotalDebitCreditAmount);
+            }
+            return rowList;
+        }
 
-						totalDebit += paymentSubsidy.DebitAmount;
-						totalCredit += paymentSubsidy.CreditAmount;
-					}
+        public List<Entities.DgvTrnPaymentSubsidy> GetPaymentSubsidyListDataFilterBySubsidyCode()
+        {
+            List<Entities.DgvTrnPaymentSubsidy> rowList = new List<Entities.DgvTrnPaymentSubsidy>();
 
-					dgvPaymentSubsidy.Rows.Add("", "", "", "TOTALS: ", totalDebit.ToString("#,##0.00"), totalCredit.ToString("#,##0.00"), "", "");
+            Decimal totalDebit = 0, totalCredit = 0;
 
-					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-					dgvPaymentSubsidy["colCustomer", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-					dgvPaymentSubsidy["colDebit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
-					dgvPaymentSubsidy["colCredit", dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+            filterDate = dtpDate.Value.Date;
+            filterSubsidyCode = txtSubsidyCodeSearch.Text;
 
-					dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
+            var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
+                                   where d.Date == filterDate && d.SubsidyCode.Contains(filterSubsidyCode)
+                                   select d;
+
+            if (paymentSubsidies.Any())
+            {
+                var rows = from d in paymentSubsidies
+                           select new Entities.DgvTrnPaymentSubsidy
+                           {
+                               ColumnId = d.Id.ToString(),
+                               ColumnTimeStamp = d.TimeStamp.ToShortDateString(),
+                               ColumnSubsidyCode = d.SubsidyCode,
+                               ColumnCustomer = d.MstCustomer.Customer,
+                               ColumnDebit = d.DebitAmount.ToString(),
+                               ColumnCredit = d.CreditAmount.ToString(),
+                               ColumnParticulars = d.Particulars,
+                               ColumnUser = d.MstUser.FullName
+                           };
+
+                totalDebit = paymentSubsidies.Sum(d => d.DebitAmount);
+                totalCredit = paymentSubsidies.Sum(d => d.CreditAmount);
+
+                Entities.DgvTrnPaymentSubsidy runningTotalDebitCreditAmount = new Entities.DgvTrnPaymentSubsidy
+                {
+                    ColumnSubsidyCode = "Total Amount",
+                    ColumnDebit = totalDebit.ToString(),
+                    ColumnCredit = totalCredit.ToString()
+                };
+
+                rowList = rows.ToList();
+
+                rowList.Add(runningTotalDebitCreditAmount);
+            }
+            return rowList;
+        }
+
+        public void GetPaymentSubsidySource()
+        {
+            if (filterSubcidyCodeFlag)
+            {
+                paymentSubsidyList = GetPaymentSubsidyListDataFilterBySubsidyCode();
+            }
+
+            if (!filterSubcidyCodeFlag)
+            {
+                paymentSubsidyList = GetPaymentSubsidyListDataFilterByDateAndSearch();
+            }
+
+            if (paymentSubsidyList.Any())
+            {
+                pageNumber = 1;
+                pageList = new PagedList<Entities.DgvTrnPaymentSubsidy>(paymentSubsidyList, pageNumber, pageSize);
+
+                if (pageList.PageCount == 1)
+                {
+                    buttonSalesListPageListFirst.Enabled = false;
+                    buttonSalesListPageListPrevious.Enabled = false;
+                    buttonSalesListPageListNext.Enabled = false;
+                    buttonSalesListPageListLast.Enabled = false;
+                }
+                else if (pageNumber == 1)
+                {
+                    buttonSalesListPageListFirst.Enabled = false;
+                    buttonSalesListPageListPrevious.Enabled = false;
+                    buttonSalesListPageListNext.Enabled = true;
+                    buttonSalesListPageListLast.Enabled = true;
+                }
+                else if (pageNumber == pageList.PageCount)
+                {
+                    buttonSalesListPageListFirst.Enabled = true;
+                    buttonSalesListPageListPrevious.Enabled = true;
+                    buttonSalesListPageListNext.Enabled = false;
+                    buttonSalesListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonSalesListPageListFirst.Enabled = true;
+                    buttonSalesListPageListPrevious.Enabled = true;
+                    buttonSalesListPageListNext.Enabled = true;
+                    buttonSalesListPageListLast.Enabled = true;
+                }
+
+                textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                dataPaymentSubsidyListSource.DataSource = pageList;
+            }
+            else
+            {
+                buttonSalesListPageListFirst.Enabled = false;
+                buttonSalesListPageListPrevious.Enabled = false;
+                buttonSalesListPageListNext.Enabled = false;
+                buttonSalesListPageListLast.Enabled = false;
+
+                dataPaymentSubsidyListSource.Clear();
+                textBoxPageNumber.Text = "0 / 0";
+            }
+
+        }
+
+        public void CreateDgvPaymentSubsidy()
+        {
+            dgvPaymentSubsidy.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPaymentSubsidy.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPaymentSubsidy.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            GetPaymentSubsidySource();
+            GetPaymentSubsidyListDataGridSource();
+        }
+
+        public void GetPaymentSubsidyListDataGridSource()
+        {
+
+            dgvPaymentSubsidy.DataSource = dataPaymentSubsidyListSource;
+
+            if (dgvPaymentSubsidy.Rows.Count != 0)
+            {
+                if (pageList.PageCount == 1)
+                {
+                    dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy[4, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy[5, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+
+                    dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
+                }
+
+                if (pageNumber == pageList.PageCount)
+                {
+                    dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy[4, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+                    dgvPaymentSubsidy[5, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+
+                    dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
+                }
+            }
+        }
 
 
-	}
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            dataPaymentSubsidyListSource.Clear();
+
+            filterDate = dtpDate.Value.Date;
+
+            filterSubcidyCodeFlag = false;
+
+            CreateDgvPaymentSubsidy();
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dataPaymentSubsidyListSource.Clear();
+
+            filterSubcidyCodeFlag = false;
+
+            CreateDgvPaymentSubsidy();
+
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                dataPaymentSubsidyListSource.Clear();
+
+                filterSubcidyCodeFlag = false;
+
+                CreateDgvPaymentSubsidy();
+
+            }
+        }
+
+        public void emptySubsidyCode()
+        {
+            txtSubsidyCode.Text = subsidyCode;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm(this, loginForm);
+            settingsForm.ShowDialog();
+        }
+
+        public void getFooterDetails()
+        {
+            String settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings.json");
+
+            String json;
+            using (StreamReader trmRead = new StreamReader(settingsPath)) { json = trmRead.ReadToEnd(); }
+
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            Entities.Settings settings = javaScriptSerializer.Deserialize<Entities.Settings>(json);
+
+            lblPaymentSubsidySoftware.Text = settings.Software;
+            lblPaymentSubsidyVersion.Text = settings.Version;
+            lblPaymentSubsidyDeveloper.Text = settings.Developer;
+        }
+
+        private void PaymentSubsidyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnGenerateCSV_Click(object sender, EventArgs e)
+        {
+            GenerateCSVForm generateCSVForm = new GenerateCSVForm();
+            generateCSVForm.ShowDialog();
+        }
+
+ 
+
+        private void txtSubsidyCodeSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+
+                filterSubcidyCodeFlag = true;
+
+                CreateDgvPaymentSubsidy();
+
+            }
+        }
+
+        private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
+        {
+
+            filterSubcidyCodeFlag = true;
+
+            CreateDgvPaymentSubsidy();
+
+
+        }
+
+
+        private void buttonSalesListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasNextPage == true)
+            {
+                pageList = new PagedList<Entities.DgvTrnPaymentSubsidy>(paymentSubsidyList, ++pageNumber, pageSize);
+                dataPaymentSubsidyListSource.DataSource = pageList;
+            }
+
+            buttonSalesListPageListFirst.Enabled = true;
+            buttonSalesListPageListPrevious.Enabled = true;
+
+            if (pageNumber == pageList.PageCount)
+            {
+                buttonSalesListPageListNext.Enabled = false;
+                buttonSalesListPageListLast.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvTrnPaymentSubsidy>(paymentSubsidyList, pageList.PageCount, pageSize);
+            dataPaymentSubsidyListSource.DataSource = pageList;
+
+            buttonSalesListPageListFirst.Enabled = true;
+            buttonSalesListPageListPrevious.Enabled = true;
+            buttonSalesListPageListNext.Enabled = false;
+            buttonSalesListPageListLast.Enabled = false;
+
+            pageNumber = pageList.PageCount;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+
+            dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPaymentSubsidy[3, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+            dgvPaymentSubsidy[4, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+            dgvPaymentSubsidy[5, dgvPaymentSubsidy.Rows.Count - 1].Style.Font = new Font("Century Gothic", 11, FontStyle.Bold);
+
+            dgvPaymentSubsidy.Rows[dgvPaymentSubsidy.Rows.Count - 1].DefaultCellStyle.BackColor = Color.LemonChiffon;
+        }
+
+        private void buttonSalesListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasPreviousPage == true)
+            {
+                pageList = new PagedList<Entities.DgvTrnPaymentSubsidy>(paymentSubsidyList, --pageNumber, pageSize);
+                dataPaymentSubsidyListSource.DataSource = pageList;
+            }
+
+            buttonSalesListPageListNext.Enabled = true;
+            buttonSalesListPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonSalesListPageListFirst.Enabled = false;
+                buttonSalesListPageListPrevious.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvTrnPaymentSubsidy>(paymentSubsidyList, 1, pageSize);
+            dataPaymentSubsidyListSource.DataSource = pageList;
+
+            buttonSalesListPageListFirst.Enabled = false;
+            buttonSalesListPageListPrevious.Enabled = false;
+            buttonSalesListPageListNext.Enabled = true;
+            buttonSalesListPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+    }
 }

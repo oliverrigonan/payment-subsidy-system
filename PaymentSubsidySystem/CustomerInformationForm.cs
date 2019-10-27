@@ -70,7 +70,7 @@ namespace PaymentSubsidySystem
 
         public void refreshPaymentSubsidyForm()
         {
-            paymentSubsidyForm.createPaymentSubsidyForm();
+            paymentSubsidyForm.CreateDgvPaymentSubsidy();
 
             paymentSubsidyForm.subsidyCode = "";
             paymentSubsidyForm.emptySubsidyCode();
