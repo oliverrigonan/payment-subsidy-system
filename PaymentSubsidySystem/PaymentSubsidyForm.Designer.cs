@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentSubsidyForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGenerateCSV = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -45,12 +45,10 @@
             this.lblPaymentSubsidySoftware = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtSubsidyCodeSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.btn_SubsidyCodeSearch = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSusidyCodeSearch = new System.Windows.Forms.Button();
             this.lblSubsidyCode = new System.Windows.Forms.Label();
             this.txtSubsidyCode = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -108,7 +106,7 @@
             this.btnGenerateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerateCSV.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnGenerateCSV.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateCSV.Location = new System.Drawing.Point(1239, 11);
+            this.btnGenerateCSV.Location = new System.Drawing.Point(1178, 11);
             this.btnGenerateCSV.Name = "btnGenerateCSV";
             this.btnGenerateCSV.Size = new System.Drawing.Size(192, 44);
             this.btnGenerateCSV.TabIndex = 12;
@@ -124,7 +122,7 @@
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.Location = new System.Drawing.Point(1239, 11);
+            this.btnSettings.Location = new System.Drawing.Point(1178, 11);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(131, 44);
             this.btnSettings.TabIndex = 11;
@@ -140,7 +138,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1239, 11);
+            this.btnLogout.Location = new System.Drawing.Point(1178, 11);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(131, 44);
             this.btnLogout.TabIndex = 10;
@@ -240,36 +238,12 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel3.Controls.Add(this.txtSubsidyCodeSearch);
-            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.dtpDate);
-            this.panel3.Controls.Add(this.btn_SubsidyCodeSearch);
             this.panel3.Controls.Add(this.lblDate);
             this.panel3.Location = new System.Drawing.Point(0, 68);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1384, 62);
             this.panel3.TabIndex = 8;
-            // 
-            // txtSubsidyCodeSearch
-            // 
-            this.txtSubsidyCodeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubsidyCodeSearch.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubsidyCodeSearch.Location = new System.Drawing.Point(493, 15);
-            this.txtSubsidyCodeSearch.Name = "txtSubsidyCodeSearch";
-            this.txtSubsidyCodeSearch.Size = new System.Drawing.Size(738, 30);
-            this.txtSubsidyCodeSearch.TabIndex = 3;
-            this.txtSubsidyCodeSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubsidyCodeSearch_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(322, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 23);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Subsidy Code:";
             // 
             // dtpDate
             // 
@@ -280,22 +254,6 @@
             this.dtpDate.Size = new System.Drawing.Size(172, 30);
             this.dtpDate.TabIndex = 2;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
-            // 
-            // btn_SubsidyCodeSearch
-            // 
-            this.btn_SubsidyCodeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SubsidyCodeSearch.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_SubsidyCodeSearch.FlatAppearance.BorderSize = 0;
-            this.btn_SubsidyCodeSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SubsidyCodeSearch.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.btn_SubsidyCodeSearch.ForeColor = System.Drawing.Color.White;
-            this.btn_SubsidyCodeSearch.Location = new System.Drawing.Point(1237, 10);
-            this.btn_SubsidyCodeSearch.Name = "btn_SubsidyCodeSearch";
-            this.btn_SubsidyCodeSearch.Size = new System.Drawing.Size(131, 39);
-            this.btn_SubsidyCodeSearch.TabIndex = 12;
-            this.btn_SubsidyCodeSearch.Text = "Search";
-            this.btn_SubsidyCodeSearch.UseVisualStyleBackColor = false;
-            this.btn_SubsidyCodeSearch.Click += new System.EventHandler(this.btnSubsidyCodeSearch_Click);
             // 
             // lblDate
             // 
@@ -312,12 +270,29 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel4.Controls.Add(this.btnSusidyCodeSearch);
             this.panel4.Controls.Add(this.lblSubsidyCode);
             this.panel4.Controls.Add(this.txtSubsidyCode);
             this.panel4.Location = new System.Drawing.Point(0, 628);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1384, 65);
             this.panel4.TabIndex = 9;
+            // 
+            // btnSusidyCodeSearch
+            // 
+            this.btnSusidyCodeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSusidyCodeSearch.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSusidyCodeSearch.FlatAppearance.BorderSize = 0;
+            this.btnSusidyCodeSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSusidyCodeSearch.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnSusidyCodeSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSusidyCodeSearch.Location = new System.Drawing.Point(1239, 13);
+            this.btnSusidyCodeSearch.Name = "btnSusidyCodeSearch";
+            this.btnSusidyCodeSearch.Size = new System.Drawing.Size(131, 39);
+            this.btnSusidyCodeSearch.TabIndex = 13;
+            this.btnSusidyCodeSearch.Text = "Search";
+            this.btnSusidyCodeSearch.UseVisualStyleBackColor = false;
+            this.btnSusidyCodeSearch.Click += new System.EventHandler(this.btnSusidyCodeSearch_Click);
             // 
             // lblSubsidyCode
             // 
@@ -338,8 +313,9 @@
             this.txtSubsidyCode.Font = new System.Drawing.Font("Century Gothic", 14F);
             this.txtSubsidyCode.Location = new System.Drawing.Point(218, 15);
             this.txtSubsidyCode.Name = "txtSubsidyCode";
-            this.txtSubsidyCode.Size = new System.Drawing.Size(1152, 36);
+            this.txtSubsidyCode.Size = new System.Drawing.Size(1013, 36);
             this.txtSubsidyCode.TabIndex = 10;
+            this.txtSubsidyCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubsidyCode_KeyPress);
             // 
             // panel5
             // 
@@ -423,14 +399,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPaymentSubsidy.BackgroundColor = System.Drawing.Color.White;
             this.dgvPaymentSubsidy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvPaymentSubsidy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentSubsidy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -441,25 +417,25 @@
             this.ColumnCredit,
             this.ColumnParticulars,
             this.ColumnUser});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvPaymentSubsidy.Location = new System.Drawing.Point(0, 196);
             this.dgvPaymentSubsidy.Name = "dgvPaymentSubsidy";
             this.dgvPaymentSubsidy.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPaymentSubsidy.RowHeadersVisible = false;
             this.dgvPaymentSubsidy.RowTemplate.Height = 24;
             this.dgvPaymentSubsidy.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -703,9 +679,6 @@
         private System.Windows.Forms.DataGridView dgvPaymentSubsidy;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnGenerateCSV;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txtSubsidyCodeSearch;
-		private System.Windows.Forms.Button btn_SubsidyCodeSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTimeStamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubsidyCode;
@@ -720,5 +693,6 @@
         private System.Windows.Forms.Button buttonSalesListPageListLast;
         private System.Windows.Forms.Button buttonSalesListPageListPrevious;
         private System.Windows.Forms.TextBox textBoxPageNumber;
+        private System.Windows.Forms.Button btnSusidyCodeSearch;
     }
 }

@@ -30,7 +30,6 @@ namespace PaymentSubsidySystem
         public String subsidyCode = "";
         public DateTime filterDate = DateTime.Today;
         public String filterSubsidyCode = "";
-        public Boolean filterSubcidyCodeFlag = false;
 
         public Decimal totalDebitAmount = 0;
         public Decimal totalCreditAmount = 0;
@@ -107,62 +106,11 @@ namespace PaymentSubsidySystem
             return rowList;
         }
 
-        public List<Entities.DgvTrnPaymentSubsidy> GetPaymentSubsidyListDataFilterBySubsidyCode()
-        {
-            List<Entities.DgvTrnPaymentSubsidy> rowList = new List<Entities.DgvTrnPaymentSubsidy>();
 
-            Decimal totalDebit = 0, totalCredit = 0;
-
-            filterDate = dtpDate.Value.Date;
-            filterSubsidyCode = txtSubsidyCodeSearch.Text;
-
-            var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-                                   where d.Date == filterDate && d.SubsidyCode.Contains(filterSubsidyCode)
-                                   select d;
-
-            if (paymentSubsidies.Any())
-            {
-                var rows = from d in paymentSubsidies
-                           select new Entities.DgvTrnPaymentSubsidy
-                           {
-                               ColumnId = d.Id.ToString(),
-                               ColumnTimeStamp = d.TimeStamp.ToShortDateString(),
-                               ColumnSubsidyCode = d.SubsidyCode,
-                               ColumnCustomer = d.MstCustomer.Customer,
-                               ColumnDebit = d.DebitAmount.ToString(),
-                               ColumnCredit = d.CreditAmount.ToString(),
-                               ColumnParticulars = d.Particulars,
-                               ColumnUser = d.MstUser.FullName
-                           };
-
-                totalDebit = paymentSubsidies.Sum(d => d.DebitAmount);
-                totalCredit = paymentSubsidies.Sum(d => d.CreditAmount);
-
-                Entities.DgvTrnPaymentSubsidy runningTotalDebitCreditAmount = new Entities.DgvTrnPaymentSubsidy
-                {
-                    ColumnSubsidyCode = "Total Amount",
-                    ColumnDebit = totalDebit.ToString(),
-                    ColumnCredit = totalCredit.ToString()
-                };
-
-                rowList = rows.ToList();
-
-                rowList.Add(runningTotalDebitCreditAmount);
-            }
-            return rowList;
-        }
 
         public void GetPaymentSubsidySource()
         {
-            if (filterSubcidyCodeFlag)
-            {
-                paymentSubsidyList = GetPaymentSubsidyListDataFilterBySubsidyCode();
-            }
-
-            if (!filterSubcidyCodeFlag)
-            {
-                paymentSubsidyList = GetPaymentSubsidyListDataFilterByDateAndSearch();
-            }
+            paymentSubsidyList = GetPaymentSubsidyListDataFilterByDateAndSearch();
 
             if (paymentSubsidyList.Any())
             {
@@ -258,14 +206,12 @@ namespace PaymentSubsidySystem
         {
             dataPaymentSubsidyListSource.Clear();
             filterDate = dtpDate.Value.Date;
-            filterSubcidyCodeFlag = false;
             CreateDgvPaymentSubsidy();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             dataPaymentSubsidyListSource.Clear();
-            filterSubcidyCodeFlag = false;
             CreateDgvPaymentSubsidy();
         }
 
@@ -274,7 +220,6 @@ namespace PaymentSubsidySystem
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 dataPaymentSubsidyListSource.Clear();
-                filterSubcidyCodeFlag = false;
                 CreateDgvPaymentSubsidy();
             }
         }
@@ -322,15 +267,55 @@ namespace PaymentSubsidySystem
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                filterSubcidyCodeFlag = true;
                 CreateDgvPaymentSubsidy();
             }
         }
 
-        private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
+        private void btnSusidyCodeSearch_Click(object sender, EventArgs e)
         {
-            filterSubcidyCodeFlag = true;
-            CreateDgvPaymentSubsidy();
+            GetPaymentSubsidyDetail();
+        }
+
+        private void txtSubsidyCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                GetPaymentSubsidyDetail();
+            }
+
+        }
+
+        private void GetPaymentSubsidyDetail()
+        {
+            try
+            {
+                filterDate = dtpDate.Value.Date;
+
+                subsidyCode = txtSubsidyCode.Text;
+                var customer = from d in db.TrnPaymentSubsidies
+                               where d.SubsidyCode == subsidyCode
+                               select new Entities.CustomerDetail
+                               {
+                                   Id = d.CustomerId,
+                                   Code = d.SubsidyCode,
+                                   Customer = d.MstCustomer.Customer,
+                                   Department = d.MstCustomer.Address,
+                                   Balance = d.DebitAmount,
+                               };
+                if (customer.Any())
+                {
+                    CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customer.FirstOrDefault(), filterDate);
+                    customerInformationForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Subsidy Code not exist!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("TempIsZeroException: {0}", e.Message);
+            }
         }
 
 
@@ -408,5 +393,7 @@ namespace PaymentSubsidySystem
             pageNumber = 1;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
+
+
     }
 }
