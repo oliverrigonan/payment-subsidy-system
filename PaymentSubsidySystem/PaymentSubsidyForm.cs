@@ -48,8 +48,6 @@ namespace PaymentSubsidySystem
             lblCurrentUser.Text = loginForm.currentUser;
 
             getFooterDetails();
-
-
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -259,23 +257,16 @@ namespace PaymentSubsidySystem
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             dataPaymentSubsidyListSource.Clear();
-
             filterDate = dtpDate.Value.Date;
-
             filterSubcidyCodeFlag = false;
-
             CreateDgvPaymentSubsidy();
-
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             dataPaymentSubsidyListSource.Clear();
-
             filterSubcidyCodeFlag = false;
-
             CreateDgvPaymentSubsidy();
-
         }
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -283,11 +274,8 @@ namespace PaymentSubsidySystem
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 dataPaymentSubsidyListSource.Clear();
-
                 filterSubcidyCodeFlag = false;
-
                 CreateDgvPaymentSubsidy();
-
             }
         }
 
@@ -328,28 +316,21 @@ namespace PaymentSubsidySystem
             generateCSVForm.ShowDialog();
         }
 
- 
+
 
         private void txtSubsidyCodeSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-
                 filterSubcidyCodeFlag = true;
-
                 CreateDgvPaymentSubsidy();
-
             }
         }
 
         private void btnSubsidyCodeSearch_Click(object sender, EventArgs e)
         {
-
             filterSubcidyCodeFlag = true;
-
             CreateDgvPaymentSubsidy();
-
-
         }
 
 

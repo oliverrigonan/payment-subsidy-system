@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentSubsidyForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGenerateCSV = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -102,12 +102,13 @@
             // 
             // btnGenerateCSV
             // 
+            this.btnGenerateCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateCSV.BackColor = System.Drawing.Color.ForestGreen;
             this.btnGenerateCSV.FlatAppearance.BorderSize = 0;
             this.btnGenerateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerateCSV.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnGenerateCSV.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateCSV.Location = new System.Drawing.Point(904, 11);
+            this.btnGenerateCSV.Location = new System.Drawing.Point(1239, 11);
             this.btnGenerateCSV.Name = "btnGenerateCSV";
             this.btnGenerateCSV.Size = new System.Drawing.Size(192, 44);
             this.btnGenerateCSV.TabIndex = 12;
@@ -117,12 +118,13 @@
             // 
             // btnSettings
             // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.btnSettings.ForeColor = System.Drawing.Color.Black;
-            this.btnSettings.Location = new System.Drawing.Point(1102, 11);
+            this.btnSettings.Location = new System.Drawing.Point(1239, 11);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(131, 44);
             this.btnSettings.TabIndex = 11;
@@ -132,6 +134,7 @@
             // 
             // btnLogout
             // 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogout.BackColor = System.Drawing.Color.IndianRed;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -242,7 +245,7 @@
             this.panel3.Controls.Add(this.dtpDate);
             this.panel3.Controls.Add(this.btn_SubsidyCodeSearch);
             this.panel3.Controls.Add(this.lblDate);
-            this.panel3.Location = new System.Drawing.Point(0, 70);
+            this.panel3.Location = new System.Drawing.Point(0, 68);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1384, 62);
             this.panel3.TabIndex = 8;
@@ -252,9 +255,9 @@
             this.txtSubsidyCodeSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubsidyCodeSearch.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubsidyCodeSearch.Location = new System.Drawing.Point(501, 15);
+            this.txtSubsidyCodeSearch.Location = new System.Drawing.Point(493, 15);
             this.txtSubsidyCodeSearch.Name = "txtSubsidyCodeSearch";
-            this.txtSubsidyCodeSearch.Size = new System.Drawing.Size(730, 30);
+            this.txtSubsidyCodeSearch.Size = new System.Drawing.Size(738, 30);
             this.txtSubsidyCodeSearch.TabIndex = 3;
             this.txtSubsidyCodeSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubsidyCodeSearch_KeyPress);
             // 
@@ -262,7 +265,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(322, 18);
+            this.label2.Location = new System.Drawing.Point(322, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 23);
             this.label2.TabIndex = 4;
@@ -298,7 +301,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.lblDate.Location = new System.Drawing.Point(14, 17);
+            this.lblDate.Location = new System.Drawing.Point(14, 16);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(64, 23);
             this.lblDate.TabIndex = 1;
@@ -346,7 +349,7 @@
             this.panel5.Controls.Add(this.btnSearch);
             this.panel5.Controls.Add(this.lblUsername);
             this.panel5.Controls.Add(this.txtSearch);
-            this.panel5.Location = new System.Drawing.Point(0, 132);
+            this.panel5.Location = new System.Drawing.Point(0, 131);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1384, 65);
             this.panel5.TabIndex = 10;
@@ -359,7 +362,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(1239, 11);
+            this.btnSearch.Location = new System.Drawing.Point(1238, 11);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 39);
             this.btnSearch.TabIndex = 12;
@@ -384,7 +387,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.txtSearch.Location = new System.Drawing.Point(117, 15);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(1116, 32);
+            this.txtSearch.Size = new System.Drawing.Size(1114, 32);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -420,14 +423,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPaymentSubsidy.BackgroundColor = System.Drawing.Color.White;
             this.dgvPaymentSubsidy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaymentSubsidy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentSubsidy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -438,25 +441,25 @@
             this.ColumnCredit,
             this.ColumnParticulars,
             this.ColumnUser});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPaymentSubsidy.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPaymentSubsidy.Location = new System.Drawing.Point(0, 196);
             this.dgvPaymentSubsidy.Name = "dgvPaymentSubsidy";
             this.dgvPaymentSubsidy.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 11F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentSubsidy.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPaymentSubsidy.RowHeadersVisible = false;
             this.dgvPaymentSubsidy.RowTemplate.Height = 24;
             this.dgvPaymentSubsidy.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -542,7 +545,7 @@
             this.panel6.BackColor = System.Drawing.SystemColors.Control;
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.lblCurrentUser);
-            this.panel6.Location = new System.Drawing.Point(0, 582);
+            this.panel6.Location = new System.Drawing.Point(0, 583);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1384, 44);
             this.panel6.TabIndex = 15;
@@ -582,7 +585,7 @@
             this.buttonSalesListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(266, 9);
+            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(331, 9);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListNext.TabIndex = 10;
@@ -596,7 +599,7 @@
             this.buttonSalesListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(351, 9);
+            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(418, 9);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListLast.TabIndex = 11;
@@ -613,7 +616,7 @@
             this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
-            this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(106, 32);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
             this.buttonSalesListPageListPrevious.Text = "Previous";
             this.buttonSalesListPageListPrevious.UseVisualStyleBackColor = false;
@@ -624,7 +627,7 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(193, 18);
+            this.textBoxPageNumber.Location = new System.Drawing.Point(235, 18);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 15);
