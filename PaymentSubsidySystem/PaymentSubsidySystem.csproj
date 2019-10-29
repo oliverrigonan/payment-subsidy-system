@@ -72,6 +72,7 @@
     <Compile Include="ConnectionStringSettingsForm.Designer.cs">
       <DependentUpon>ConnectionStringSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\PaymentSubsidyController.cs" />
     <Compile Include="CustomerCodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="Entities\CustomerDetail.cs" />
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\DgvTrnPaymentSubsidy.cs" />
+    <Compile Include="Entities\TrnPaymentSubsidy.cs" />
     <Compile Include="GenerateCSVForm.cs">
       <SubType>Form</SubType>
     </Compile>

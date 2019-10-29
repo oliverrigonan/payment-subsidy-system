@@ -65,14 +65,9 @@ namespace PaymentSubsidySystem
 
             String searchString = txtSearch.Text;
             filterDate = dtpDate.Value.Date;
+            Controller.PaymentSubsidyController paymentSubsidyController = new Controller.PaymentSubsidyController();
 
-            var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
-                                   where d.Date == filterDate
-                                   && (d.SubsidyCode.Contains(searchString)
-                                   || d.MstCustomer.Customer.Contains(searchString)
-                                   || d.Particulars.Contains(searchString)
-                                   || d.MstUser.FullName.Contains(searchString))
-                                   select d;
+            var paymentSubsidies = paymentSubsidyController.PaymentSubsidyList(filterDate, searchString);
 
             if (paymentSubsidies.Any())
             {
@@ -80,13 +75,13 @@ namespace PaymentSubsidySystem
                            select new Entities.DgvTrnPaymentSubsidy
                            {
                                ColumnId = d.Id.ToString(),
-                               ColumnTimeStamp = d.TimeStamp.ToShortDateString(),
+                               ColumnTimeStamp = d.TimeStamp,
                                ColumnSubsidyCode = d.SubsidyCode,
-                               ColumnCustomer = d.MstCustomer.Customer,
-                               ColumnDebit = d.DebitAmount.ToString(),
-                               ColumnCredit = d.CreditAmount.ToString(),
+                               ColumnCustomer = d.Customer,
+                               ColumnDebit = d.DebitAmount.ToString("#,##0.00"),
+                               ColumnCredit = d.CreditAmount.ToString("#,##0.00"),
                                ColumnParticulars = d.Particulars,
-                               ColumnUser = d.MstUser.FullName
+                               ColumnUser = d.User
                            };
 
                 totalDebit = paymentSubsidies.Sum(d => d.DebitAmount);
@@ -95,8 +90,8 @@ namespace PaymentSubsidySystem
                 Entities.DgvTrnPaymentSubsidy runningTotalDebitCreditAmount = new Entities.DgvTrnPaymentSubsidy
                 {
                     ColumnSubsidyCode = "Total Amount",
-                    ColumnDebit = totalDebit.ToString(),
-                    ColumnCredit = totalCredit.ToString()
+                    ColumnDebit = totalDebit.ToString("#,##0.00"),
+                    ColumnCredit = totalCredit.ToString("#,##0.00")
                 };
 
                 rowList = rows.ToList();
@@ -170,6 +165,7 @@ namespace PaymentSubsidySystem
 
             GetPaymentSubsidySource();
             GetPaymentSubsidyListDataGridSource();
+
         }
 
         public void GetPaymentSubsidyListDataGridSource()
