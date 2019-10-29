@@ -95,7 +95,6 @@ namespace PaymentSubsidySystem
                 };
 
                 rowList = rows.ToList();
-
                 rowList.Add(runningTotalDebitCreditAmount);
             }
             return rowList;
