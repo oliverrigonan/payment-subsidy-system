@@ -287,16 +287,19 @@ namespace PaymentSubsidySystem
                 filterDate = dtpDate.Value.Date;
 
                 subsidyCode = txtSubsidyCode.Text;
-                var customer = from d in db.TrnPaymentSubsidies
-                               where d.SubsidyCode == subsidyCode
+                var customer = from d in db.MstCustomers
+                               where d.CustomerCode == subsidyCode 
+                               
+                               && d.IsLocked == true
                                select new Entities.CustomerDetail
                                {
-                                   Id = d.CustomerId,
-                                   Code = d.SubsidyCode,
-                                   Customer = d.MstCustomer.Customer,
-                                   Department = d.MstCustomer.Address,
-                                   Balance = d.DebitAmount,
+                                   Id = d.Id,
+                                   Code = d.CustomerCode,
+                                   Customer = d.Customer,
+                                   Department = d.Address,
+                                   Balance = 0,
                                };
+
                 if (customer.Any())
                 {
                     CustomerInformationForm customerInformationForm = new CustomerInformationForm(this, loginForm, customer.FirstOrDefault(), filterDate);

@@ -61,7 +61,20 @@ namespace PaymentSubsidySystem
                 Decimal totalCreditAmount = paymentSubsidies.Sum(d => d.CreditAmount);
                 balance = totalDebitAmount - totalCreditAmount;
             }
+            else
+            {
+                var initialBalance = from d in db.TrnPaymentSubsidySettings select d;
+                if (initialBalance.Any())
+                {
+                    balance = initialBalance.FirstOrDefault().DefaultDebitAmount;
+                }
+                else
+                {
+                    balance = 0;
+                }
+            }
 
+            customer.Balance = balance;
             txtBalance.Text = balance.ToString("#,##0.00");
 
             btnCustomerDetailOK.Enabled = true;

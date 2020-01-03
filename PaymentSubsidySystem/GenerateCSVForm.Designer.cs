@@ -47,8 +47,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(468, 67);
+            this.panel1.Size = new System.Drawing.Size(374, 54);
             this.panel1.TabIndex = 7;
             // 
             // label1
@@ -56,9 +57,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Location = new System.Drawing.Point(10, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 36);
+            this.label1.Size = new System.Drawing.Size(171, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Generate CSV";
             // 
@@ -66,9 +68,10 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.lblUsername.Location = new System.Drawing.Point(52, 94);
+            this.lblUsername.Location = new System.Drawing.Point(42, 75);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(114, 23);
+            this.lblUsername.Size = new System.Drawing.Size(96, 21);
             this.lblUsername.TabIndex = 24;
             this.lblUsername.Text = "Start Date:";
             // 
@@ -76,27 +79,30 @@
             // 
             this.dtpStartDate.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(196, 89);
+            this.dtpStartDate.Location = new System.Drawing.Point(157, 71);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(260, 30);
+            this.dtpStartDate.Size = new System.Drawing.Size(209, 25);
             this.dtpStartDate.TabIndex = 25;
             // 
             // dtpEndDate
             // 
             this.dtpEndDate.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(196, 125);
+            this.dtpEndDate.Location = new System.Drawing.Point(157, 100);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(260, 30);
+            this.dtpEndDate.Size = new System.Drawing.Size(209, 25);
             this.dtpEndDate.TabIndex = 27;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.label2.Location = new System.Drawing.Point(59, 130);
+            this.label2.Location = new System.Drawing.Point(47, 104);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 23);
+            this.label2.Size = new System.Drawing.Size(88, 21);
             this.label2.TabIndex = 26;
             this.label2.Text = "End Date:";
             // 
@@ -106,9 +112,10 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(345, 192);
+            this.btnCancel.Location = new System.Drawing.Point(276, 154);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(111, 51);
+            this.btnCancel.Size = new System.Drawing.Size(89, 41);
             this.btnCancel.TabIndex = 33;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -120,9 +127,10 @@
             this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerate.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnGenerate.ForeColor = System.Drawing.Color.White;
-            this.btnGenerate.Location = new System.Drawing.Point(196, 192);
+            this.btnGenerate.Location = new System.Drawing.Point(157, 154);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(143, 51);
+            this.btnGenerate.Size = new System.Drawing.Size(114, 41);
             this.btnGenerate.TabIndex = 32;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = false;
@@ -130,10 +138,10 @@
             // 
             // GenerateCSVForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(468, 255);
+            this.ClientSize = new System.Drawing.Size(374, 204);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.dtpEndDate);
@@ -143,11 +151,13 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GenerateCSVForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate CSV";
+            this.Load += new System.EventHandler(this.GenerateCSVForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

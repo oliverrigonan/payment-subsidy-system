@@ -53,12 +53,12 @@ namespace PaymentSubsidySystem
                         foreach (var paymentSubsidy in paymentSubsidies)
                         {
                             String[] data = {
-                                paymentSubsidy.Date.ToShortDateString(),
-                                "ID: " + paymentSubsidy.SubsidyCode,
-                                paymentSubsidy.MstCustomer.Customer,
-                                paymentSubsidy.MstCustomer.Address,
-                                paymentSubsidy.CreditAmount.ToString("#,##0.00"),
-                                paymentSubsidy.Particulars
+                                paymentSubsidy.Date.ToShortDateString().Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                "ID: " + paymentSubsidy.SubsidyCode.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                paymentSubsidy.MstCustomer.Customer.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                paymentSubsidy.MstCustomer.Address.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                paymentSubsidy.CreditAmount.ToString("#,##0.00").Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                paymentSubsidy.Particulars.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty)
                             };
 
                             csv.AppendLine(String.Join(",", data));
@@ -82,6 +82,11 @@ namespace PaymentSubsidySystem
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void GenerateCSVForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace PaymentSubsidySystem.Controller
 
             var paymentSubsidies = from d in db.TrnPaymentSubsidies.OrderByDescending(d => d.Id)
                                    where d.Date == filterDate
+                                   && d.MstCustomer.IsLocked == true
                                    && (d.SubsidyCode.Contains(searchString)
                                    || d.MstCustomer.Customer.Contains(searchString)
                                    || d.Particulars.Contains(searchString)
